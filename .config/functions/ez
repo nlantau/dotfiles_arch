@@ -1,0 +1,2 @@
+# exec zsh
+ez() {exec zsh;}

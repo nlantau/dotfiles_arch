@@ -13,7 +13,6 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   alias pip3.9="/usr/local/Cellar/python@3.9/3.9.0/bin/pip3.9"
   alias p="python"
   # cli commands
-  alias grep="ggrep --color"
   
   
   # exec alias
@@ -26,6 +25,8 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   # alias python=/usr/local/bin/python3
 	
 elif [ "$(uname 2> /dev/null)" != "Darwin" ]; then
+
+  alias grep="grep --color"
 
   # Editor commands
   alias vz="$EDITOR $ZDOTDIR/.zshrc"

@@ -1,0 +1,78 @@
+#!/usr/bin/sh
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+
+  # ls color
+  colorflag="-G"
+
+  # For labs in Data Comms
+  alias pan="pandoc -V geometry:margin=0.1in -o scripts_cmd.pdf shell_cmd.md && open scripts_cmd.pdf"
+
+  # Python3.9
+  alias python3.9="/usr/local/Cellar/python@3.9/3.9.0/bin/python3.9"
+  alias pip3.9="/usr/local/Cellar/python@3.9/3.9.0/bin/pip3.9"
+  alias p="python"
+  # cli commands
+  
+  
+  # exec alias
+  alias code="open /Applications/Visual\ Studio\ Code.app/
+          \Contents/MacOS/Electron > /dev/null 2>&1 &!"
+  alias discord="open /Applications/Discord.app/
+  				\Contents/MacOS/Discord > /dev/null 2>&1 &!"
+  alias subl="open /Applications/Sublime\ Text.app/
+  				\Contents/MacOS/Sublime\ Text > /dev/null 2>&1 &!"
+  # alias python=/usr/local/bin/python3
+	
+elif [ "$(uname 2> /dev/null)" != "Darwin" ]; then
+
+  alias grep="grep --color"
+
+  # Editor commands
+  alias vz="$EDITOR $ZDOTDIR/.zshrc"
+  alias vn="$EDITOR $MYVIMRC"
+  alias va="$EDITOR $ZDOTDIR/aliasrc"
+  alias ve="$EDITOR $ZDOTDIR/.zshenv"
+  alias ali="$EDITOR $ZDOTDIR/aliasrc"
+  
+  # cd alias
+  alias cg="cd $GITHUBDIR"
+  alias cc="cd $XDG_CONFIG_HOME"
+  alias da="cd $GITHUBDIR/DA110FHT20/"
+  alias sa="cd $SCHOOLDIR"
+  # ls color
+  colorflag="--color"
+
+fi
+
+# Applies to UNIX & Linux
+alias vim="$EDITOR"
+alias vi="$EDITOR"
+alias v="$EDITOR"
+alias l="ls ${colorflag}"
+alias ls="ls ${colorflag}"
+alias la="ls -a ${colorflag}"
+alias ll="ls -lah ${colorflag}"
+alias c="clear"
+alias d="deactivate"
+alias ..="cd .."
+
+# Git bare
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ds="dotfiles status"
+alias dad="dotfiles add -u"
+#alias dp="dotfiles push dotfiles --mirror"
+alias dp="dotfiles push origin master:archi3"
+
+dc() {dotfiles commit -m "${1:-update}";}
+
+# Git - General
+alias gad="git add -u"
+alias gc="git commit -m \"minor changes\""
+alias gp="git push"
+alias gco="git checkout"
+
+
+
+
+

@@ -1,54 +1,30 @@
 #!/usr/bin/sh
+# nlantau, 2021-03-13
 
-if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+# Color stdout
+colorflag="--color"
 
-  # ls color
-  colorflag="-G"
+# Vim
+alias vim="$EDITOR"
+alias v="$EDITOR"
 
-  # For labs in Data Comms
-  alias pan="pandoc -V geometry:margin=0.1in -o scripts_cmd.pdf shell_cmd.md && open scripts_cmd.pdf"
+# Editor commands
+alias vz="$EDITOR $ZDOTDIR/.zshrc"
+alias vn="$EDITOR $MYVIMRC"
+alias ali="$EDITOR $ZDOTDIR/aliasrc"
+alias ve="$EDITOR $ZDOTDIR/.zshenv"
+alias vi="$EDITOR $XDG_CONFIG_HOME/i3/config"
 
-  # Python3.9
-  alias python3.9="/usr/local/Cellar/python@3.9/3.9.0/bin/python3.9"
-  alias pip3.9="/usr/local/Cellar/python@3.9/3.9.0/bin/pip3.9"
-  alias p="python"
-  # cli commands
-  
-  
-  # exec alias
-  alias code="open /Applications/Visual\ Studio\ Code.app/
-          \Contents/MacOS/Electron > /dev/null 2>&1 &!"
-  alias discord="open /Applications/Discord.app/
-  				\Contents/MacOS/Discord > /dev/null 2>&1 &!"
-  alias subl="open /Applications/Sublime\ Text.app/
-  				\Contents/MacOS/Sublime\ Text > /dev/null 2>&1 &!"
-  # alias python=/usr/local/bin/python3
-	
-elif [ "$(uname 2> /dev/null)" != "Darwin" ]; then
+# cd alias
+alias cg="cd $GITHUBDIR"
+alias cc="cd $XDG_CONFIG_HOME"
+alias da="cd $GITHUBDIR/DA110FHT20/"
+alias sa="cd $SCHOOLDIR"
 
-  alias grep="grep --color"
-
-  # Editor commands
-  alias vz="$EDITOR $ZDOTDIR/.zshrc"
-  alias vn="$EDITOR $MYVIMRC"
-  alias va="$EDITOR $ZDOTDIR/aliasrc"
-  alias ve="$EDITOR $ZDOTDIR/.zshenv"
-  alias ali="$EDITOR $ZDOTDIR/aliasrc"
-  
-  # cd alias
-  alias cg="cd $GITHUBDIR"
-  alias cc="cd $XDG_CONFIG_HOME"
-  alias da="cd $GITHUBDIR/DA110FHT20/"
-  alias sa="cd $SCHOOLDIR"
-  # ls color
-  colorflag="--color"
-
-fi
+# Grep
+alias grep="grep ${colorflag}"
 
 # Applies to UNIX & Linux
-alias vim="$EDITOR"
-alias vi="$EDITOR"
-alias v="$EDITOR"
 alias l="ls ${colorflag}"
 alias ls="ls ${colorflag}"
 alias la="ls -a ${colorflag}"

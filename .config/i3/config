@@ -9,8 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4    # Super-key
-set $modAlt Mod1 # Alt-key
+# Super-key
+set $mod Mod4    
+# Alt-key
+set $modAlt Mod1 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -324,8 +326,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20;
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20;
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5;
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5;
 
 
 

@@ -23,3 +23,6 @@ export SCHOOLDIR="$HOME/Dropbox/Skola/7_mot_ingenjor"
 # Vim
 export MYVIMRC="$HOME/.vimrc"
 
+# Ranger
+export RANGER_LOAD_DEFAULT_RC=false
+

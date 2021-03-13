@@ -16,7 +16,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Special
-export GITHUBDIR="$HOME/Docs/GitHub"
+export GITHUBDIR="$HOME/GitHub"
 export VIRENVDIR="$HOME/.virtualenvs"
 export SCHOOLDIR="$HOME/Dropbox/Skola/7_mot_ingenjor"
 

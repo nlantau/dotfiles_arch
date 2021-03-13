@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $modAlt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -305,8 +306,12 @@ mode "$mode_gaps_left" {
         bindsym Escape mode "default"
 }
 
-# Keyboard
-exec setxkbmap sv &
+# Keyboard -default Swedish
+exec setxkbmap se &
+
+# Change keyboard language
+bindsym $modAlt+Shift+1 exec setxkbmap us
+bindsym $modAlt+Shift+2 exec setxkbmap se
 
 # Nitrogen
 exec nitrogen --restore
@@ -314,8 +319,19 @@ exec nitrogen --restore
 # Picom
 exec picom -f
 
-
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20;
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20;
+
+
+
+
+
+
+
 
 

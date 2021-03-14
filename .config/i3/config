@@ -324,6 +324,12 @@ exec picom -f
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Touchpad, tap enable
+exec xinput set-prop 12 332 1
+
+# Touchpad, natural scrolling enable
+exec xinput set-prop 12 314 1
+
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5;

@@ -331,10 +331,15 @@ exec xinput set-prop 12 314 1
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5;
 
+# Dual monitor keys
+# Activated connected HDMI
+bindsym $modAlt+Shift+s exec xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1
+
+# Disable HDMI output
+bindsym $modAlt+Shift+d exec xrandr --output HDMI1 --off
 
 
-
-
+bindsym $modAlt+Shift+p exec flameshot gui
 
 
 

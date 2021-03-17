@@ -2,14 +2,21 @@
 
 # Super-key
 set $mod Mod4    
+
 # Alt-key
 set $modAlt Mod1 
 
 set $term --no-startup-id alacritty
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+set $suspend sudo systemctl suspend
+
+set $hibernate sudo -A systemctl hibernate
+
+
 font pango:monospace 6
+
+
+
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -111,8 +118,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -134,7 +139,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # i3-gaps
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 0
 smart_gaps on
@@ -164,6 +169,9 @@ exec xinput set-prop 12 332 1
 # Touchpad, natural scrolling enable
 exec xinput set-prop 12 314 1
 
+# G603 natural scrolling enable
+exec xinput set-prop 14 314 1
+
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5;
@@ -177,4 +185,22 @@ bindsym $modAlt+Shift+d exec xrandr --output HDMI1 --off
 
 # Print Screen
 bindsym $modAlt+Shift+p exec flameshot gui
+
+bindsym $mod+Shift+c exec --no-startup-id $suspend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

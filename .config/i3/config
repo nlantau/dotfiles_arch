@@ -164,10 +164,11 @@ exec picom -f
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Touchpad, tap enable
-exec xinput set-prop 12 332 1
+#exec xinput set-prop 12 332 1
+exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
 
 # Touchpad, natural scrolling enable
-exec xinput set-prop 12 314 1
+#exec xinput set-prop 12 314 1
 
 # G603 natural scrolling enable
 exec xinput set-prop 14 314 1

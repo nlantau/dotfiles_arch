@@ -163,21 +163,13 @@ exec picom -f
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Touchpad, tap enable
-#exec xinput set-prop 12 332 1
+# xinput, Touchpad
 exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
-
-# Touchpad, natural scrolling enable
-#exec xinput set-prop 12 314 1
-
-# G603 natural scrolling enable
-#exec xinput set-prop 14 314 1
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5;
 
-# Dual monitor keys
 # Activated connected HDMI
 bindsym $modAlt+Shift+s exec xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1
 
@@ -187,21 +179,6 @@ bindsym $modAlt+Shift+d exec xrandr --output HDMI1 --off
 # Print Screen
 bindsym $modAlt+Shift+p exec flameshot gui
 
+# Suspend session
 bindsym $mod+Shift+c exec --no-startup-id $suspend
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

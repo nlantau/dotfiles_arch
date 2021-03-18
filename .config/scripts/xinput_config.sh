@@ -2,7 +2,6 @@
 
 # nlantau, 2021-03-18
 
-
 # Get Touchpad ID
 IDTOUCH=$(xinput list | grep Touchpad | cut -f 2 | grep -Eo '[0-9]{1,2}')
 SCROLLPROP=$(xinput list-props $IDTOUCH | grep -E 'Natural Scrolling Enabled \('| grep -Eo '[0-9]{2,3}')

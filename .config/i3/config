@@ -171,7 +171,7 @@ exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
 #exec xinput set-prop 12 314 1
 
 # G603 natural scrolling enable
-exec xinput set-prop 14 314 1
+#exec xinput set-prop 14 314 1
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5;

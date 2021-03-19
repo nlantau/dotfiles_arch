@@ -13,7 +13,7 @@ set $suspend sudo systemctl suspend
 set $hibernate sudo -A systemctl hibernate
 
 
-font pango:monospace 6
+font pango:monospace 8
 
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the

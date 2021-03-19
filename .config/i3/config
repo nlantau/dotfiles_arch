@@ -185,6 +185,10 @@ bindsym $modAlt+Shift+p exec flameshot gui
 # Suspend session
 bindsym $mod+Shift+c exec --no-startup-id $suspend
 
+# Lockscreen
+bindsym $mod+Shift+x exec $HOME/.config/scripts/lock
+
+
 # Spotify
 exec --no-startup-id spotifyd
 bindsym $modAlt+Shift+m exec $term -e spt

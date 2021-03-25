@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+spotifyd
+alacritty -e spt

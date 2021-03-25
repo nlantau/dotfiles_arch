@@ -188,6 +188,9 @@ bindsym $mod+Shift+c exec --no-startup-id $suspend
 # Lockscreen
 bindsym $mod+Shift+x exec $HOME/.config/scripts/lock
 
+# Shutdown now
+bindsym $mod+Shift+k exec shutdown now
+
 
 # Spotify
 #exec_always spotifyd

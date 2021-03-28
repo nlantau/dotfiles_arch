@@ -54,7 +54,7 @@ n
 
 w
 Y
-# Partition table writen to disk
+# Partition table written to disk
 
 lsblk
 mkfs.fat -F32 /dev/<disk-name>1

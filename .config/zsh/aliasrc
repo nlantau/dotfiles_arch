@@ -37,8 +37,8 @@ alias ..="cd .."
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ds="dotfiles status"
 alias dad="dotfiles add -u"
-#alias dp="dotfiles push dotfiles --mirror"
-alias dp="dotfiles push origin master:manjaroi3"
+alias dp="dotfiles push --set-upstream origin manjaroi3"
+
 
 dc() {dotfiles commit -m "${1:-update}";}
 

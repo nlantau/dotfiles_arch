@@ -26,7 +26,7 @@ bindkey -v
 
 # Add ~/.config/functions/ to fpath
 fpath=($HOME/.config/functions $fpath)
-autoload ez #fa fd fdr ff gacp gs s38 s39
+autoload ez ex #fa fd fdr ff gacp gs s38 s39
 
 # setopt
 setopt PROMPT_SUBST
@@ -35,7 +35,4 @@ setopt PROMPT_SUBST
 # PS1 & RPS1
 PROMPT="λ %F{green}%1~ %f> "
 RPROMPT='${vcs_info_msg_0_}' 
-
-
-
 

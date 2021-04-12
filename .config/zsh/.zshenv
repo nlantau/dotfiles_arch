@@ -3,6 +3,7 @@
 # Default programs
 export EDITOR="vim"
 export VISUAL="vim"
+export BROWSER="firefox"
 
 # XDG Base Directory 
 export XDG_CONFIG_HOME="$HOME/.config"

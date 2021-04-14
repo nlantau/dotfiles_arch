@@ -174,10 +174,12 @@ bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 5;
 
 # Activated connected HDMI
-bindsym $modAlt+Shift+s exec xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1
+#bindsym $modAlt+Shift+s exec xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1
+bindsym $modAlt+Shift+s exec /home/nlantau/.config/scripts/xrandr_dual_monitors.sh
 
 # Disable HDMI output
-bindsym $modAlt+Shift+d exec xrandr --output HDMI1 --off
+#bindsym $modAlt+Shift+d exec xrandr --output HDMI1 --off
+bindsym $modAlt+Shift+d exec /home/nlantau/.config/scripts/xrandr_kill_dual.sh
 
 # Print Screen
 bindsym $modAlt+Shift+p exec flameshot gui
@@ -194,12 +196,7 @@ bindsym $mod+Shift+k exec shutdown now
 # OpenVPN to tryhackme.com
 bindsym $modAlt+Shift+t exec sudo openvpn ~/Hämtningar/nlantau\(1\).ovpn
 
-
 # Spotify
 #exec_always spotifyd
 #bindsym $modAlt+Shift+m exec $term -e spt
 bindsym $modAlt+Shift+m exec $HOME/.config/scripts/spotify
-
-
-
-

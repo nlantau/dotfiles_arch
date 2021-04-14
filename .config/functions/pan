@@ -1,4 +1,4 @@
-
+# nlantau, 2021-04-15
 pan() {
     FILE=$1;
     FILESTRIP=${FILE:0:-3}

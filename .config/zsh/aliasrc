@@ -1,0 +1,55 @@
+#!/usr/bin/sh
+# nlantau, 2021-03-13
+
+# Color stdout
+colorflag="--color"
+
+# Vim
+alias vim="$EDITOR"
+alias v="$EDITOR"
+
+# Editor commands
+alias vz="$EDITOR $ZDOTDIR/.zshrc"
+alias vn="$EDITOR $MYVIMRC"
+alias ali="$EDITOR $ZDOTDIR/aliasrc"
+alias ve="$EDITOR $ZDOTDIR/.zshenv"
+alias vi="$EDITOR $XDG_CONFIG_HOME/i3/config"
+
+# cd alias
+alias cg="cd $GITHUBDIR"
+alias cc="cd $XDG_CONFIG_HOME"
+alias da="cd $GITHUBDIR/DA110FHT20/"
+alias sa="cd $SCHOOLDIR"
+
+# Grep
+alias grep="grep ${colorflag}"
+
+# Applies to UNIX & Linux
+alias l="ls ${colorflag}"
+alias ls="ls ${colorflag}"
+alias la="ls -a ${colorflag}"
+alias ll="ls -lah ${colorflag}"
+alias c="clear"
+alias d="deactivate"
+alias ..="cd .."
+
+# Git bare
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ds="dotfiles status"
+alias dad="dotfiles add -u"
+#alias dp="dotfiles push dotfiles --mirror"
+alias dp="dotfiles push origin master:archi3_Lenovo"
+
+dc() {dotfiles commit -m "${1:-update}";}
+
+# Git - General
+alias gad="git add -u"
+alias gc="git commit -m \"minor changes\""
+alias gp="git push"
+alias gco="git checkout"
+
+
+
+
+
+

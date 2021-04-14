@@ -18,4 +18,5 @@ xinput set-prop $G603ID $GSCROLLPROP 1
 # Enable tap
 xinput set-prop $IDTOUCH $TAPPROP 1
 
-
+# Set TouchPad Speed
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.6

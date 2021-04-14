@@ -170,11 +170,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
 
 # Screen brightness controls
-#bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5;
-#bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 5;
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 5;
-#bindsym $mod+F1 exec $HOME/.config/scripts/dec_backlight.sh
 
 # Activated connected HDMI
 bindsym $modAlt+Shift+s exec xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1
@@ -189,10 +186,13 @@ bindsym $modAlt+Shift+p exec flameshot gui
 bindsym $mod+Shift+c exec --no-startup-id $suspend
 
 # Lockscreen
-bindsym $mod+Shift+x exec $HOME/.config/scripts/lock
+bindsym $mod+Shift+x exec /home/nlantau/.config/scripts/lock
 
 # Shutdown now
 bindsym $mod+Shift+k exec shutdown now
+
+# OpenVPN to tryhackme.com
+bindsym $modAlt+Shift+t exec sudo openvpn ~/Hämtningar/nlantau\(1\).ovpn
 
 
 # Spotify

@@ -200,3 +200,12 @@ bindsym $modAlt+Shift+t exec sudo openvpn ~/Hämtningar/nlantau\(1\).ovpn
 #exec_always spotifyd
 #bindsym $modAlt+Shift+m exec $term -e spt
 bindsym $modAlt+Shift+m exec $HOME/.config/scripts/spotify
+
+# IntelliJ
+# Not loading plugings when executed this way...
+bindsym $modAlt+Shift+j exec /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh
+
+
+
+
+

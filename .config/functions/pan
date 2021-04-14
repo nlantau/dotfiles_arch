@@ -1,0 +1,6 @@
+
+pan() {
+    FILE=$1;
+    FILESTRIP=${FILE:0:-3}
+    pandoc -V geometry:margin=0.1in -o $FILESTRIP.pdf $FILE;
+}

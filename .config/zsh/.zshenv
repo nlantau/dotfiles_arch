@@ -27,4 +27,4 @@ export MYVIMRC="$HOME/.vimrc"
 # Ranger
 export RANGER_LOAD_DEFAULT_RC=false
 #tmux source-file $HOME/.tmux.conf
-
+export TERM=xterm-256color

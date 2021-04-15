@@ -93,8 +93,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Assign workspaces
-assign [class="discord"] $ws4
-assign [class="firefox"] $ws2
+#assign [class="discord"] $ws4
+#assign [class="firefox"] $ws2
 
 
 # switch to workspace

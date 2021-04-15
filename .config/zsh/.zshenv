@@ -16,9 +16,10 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Special
+export DROPBOXDIR="$HOME/Dropbox"
 export GITHUBDIR="$HOME/Github"
 export VIRENVDIR="$HOME/.virtualenvs"
-export SCHOOLDIR="$HOME/Dropbox/Skola/7_mot_ingenjor"
+export SCHOOLDIR="$DROPBOXDIR/Skola/7_mot_ingenjor/1_Current"
 
 # Vim
 export MYVIMRC="$HOME/.vimrc"

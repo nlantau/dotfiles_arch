@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Need spotifyd as backend
+# If device not found: 
+# spotifyd -u username -p password
+# then enter spt
+
+spotifyd
+alacritty -e spt

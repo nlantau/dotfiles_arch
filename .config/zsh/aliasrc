@@ -18,7 +18,7 @@ alias vi="$EDITOR $XDG_CONFIG_HOME/i3/config"
 # cd alias
 alias cg="cd $GITHUBDIR"
 alias cc="cd $XDG_CONFIG_HOME"
-alias da="cd $GITHUBDIR/DA110FHT20/"
+alias da="cd $DROPBOXDIR"
 alias sa="cd $SCHOOLDIR"
 
 # Grep

@@ -175,6 +175,10 @@ nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader><Leader> :w<CR>
 
 
+" ----- Save And Compile pdf  -----------------------------------------
+nnoremap <C-r>r :w<CR>:!pandoc -V geometry:margin=0.1in -o %:r.pdf %<Enter><CR>
+
+
 " ----- Git Fugitive --------------------------------------------------
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gp :Gpush<CR>

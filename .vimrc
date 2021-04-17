@@ -25,14 +25,12 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-"Plug 'andviro/flake8-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-"Plug 'vim-python/python-syntax'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neovimhaskell/haskell-vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mboughaba/i3config.vim'
 call plug#end()
 
 

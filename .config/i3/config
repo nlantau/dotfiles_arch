@@ -127,14 +127,14 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+
+##### Resize tiles #########################################################
+
 mode "resize" {
-        # same bindings, but for the arrow keys
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -142,18 +142,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# i3-gaps
+
+##### i3-gaps ##############################################################
+
 for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 0
 smart_gaps on
 
-# Keyboard -default Swedish
-exec setxkbmap se &
+
+##### XSET #################################################################
 
 # Faster key repeat and delay
 exec_always xset r rate 300 50
 
+# Never remove this! (Bell sound)
+exec_always xset b off
+
+
+##### LANGUAGE #############################################################
+
+# Keyboard -default Swedish
+exec setxkbmap se &
 # Change keyboard language
 bindsym $modAlt+Shift+1 exec setxkbmap us
 bindsym $modAlt+Shift+2 exec setxkbmap se
@@ -174,7 +184,7 @@ exec --no-startup-id $HOME/.config/scripts/xmod_caps.sh
 #exec --no-startup-id $HOEM/.config/scripts/start.sh
 
 # Polybar Launch Script
-exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # xinput, Touchpad
 exec --no-startup-id $HOME/.config/scripts/xinput_config.sh
@@ -207,10 +217,8 @@ mode "$mode_system" {
     bindsym l exec --no-startup-id $locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $locker && $suspend, mode "default"
-    #bindsym h exec --no-startup-id $locker && $hibernate, mode "default"
     bindsym r exec --no-startup-id $locker && $reboot, mode "default"
     bindsym Shift+s exec --no-startup-id shutdown now, mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -231,11 +239,11 @@ bindsym $modAlt+Shift+m exec $HOME/.config/scripts/spotify
 
 # IntelliJ
 # Not loading plugings when executed this way...
-bindsym $modAlt+Shift+j exec /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh
+#bindsym $modAlt+Shift+j exec $term -e /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh
+bindsym $modAlt+Shift+j exec $term -e /home/nlantau/.config/scripts/run_intellij.sh
 
 
-
-##### TESTING #############################################################
+##### DROPDOWN ############################################################
 
 bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym $mod+a [instance="math"] scratchpad show; [instance="math"] move position center
@@ -260,9 +268,5 @@ for_window [instance="math"] move scratchpad
 exec --no-startup-id $term2 --name math -e python -q
 
 
-
-
-
-
-
+##### TESTING #############################################################
 

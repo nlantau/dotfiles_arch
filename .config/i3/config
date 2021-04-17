@@ -58,7 +58,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h+h split h
+bindsym $modAlt+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -152,7 +152,7 @@ smart_gaps on
 exec setxkbmap se &
 
 # Faster key repeat and delay
-exec_always xset r rate 210 40
+exec_always xset r rate 300 50
 
 # Change keyboard language
 bindsym $modAlt+Shift+1 exec setxkbmap us
@@ -170,6 +170,9 @@ exec picom -f
 # Caps -> Esc
 exec --no-startup-id $HOME/.config/scripts/xmod_caps.sh
 
+# Load start script
+#exec --no-startup-id $HOEM/.config/scripts/start.sh
+
 # Polybar Launch Script
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -183,6 +186,10 @@ exec --no-startup-id $HOME/.config/scripts/xinput_config.sh
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5;
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 5;
 
+# Set lowest brightness
+bindsym $modAlt+l exec sudo xbacklight -set 1;
+
+
 # Activated connected HDMI
 bindsym $modAlt+Shift+s exec /home/nlantau/.config/scripts/xrandr_dual_monitors.sh
 bindsym $modAlt+Shift+d exec /home/nlantau/.config/scripts/xrandr_kill_dual.sh
@@ -195,12 +202,12 @@ bindsym $modAlt+Shift+p exec flameshot gui
 
 set $locker /home/nlantau/.config/scripts/lock && sleep 1
 
-set $mode_system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system (l) lock, (s) suspend, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $locker && $suspend, mode "default"
-    bindsym h exec --no-startup-id $locker && $hibernate, mode "default"
+    #bindsym h exec --no-startup-id $locker && $hibernate, mode "default"
     bindsym r exec --no-startup-id $locker && $reboot, mode "default"
     bindsym Shift+s exec --no-startup-id shutdown now, mode "default"
 
@@ -232,6 +239,13 @@ bindsym $modAlt+Shift+j exec /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/ide
 
 bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym $mod+a [instance="math"] scratchpad show; [instance="math"] move position center
+bindsym $mod+t [instance="taskmanager"] scratchpad show; [instance="taskmanager"] move position center
+
+# Dropdown terminal
+for_window [instance="taskmanager"] floating enable
+for_window [instance="taskmanager"] resize set 800 700
+for_window [instance="taskmanager"] move scratchpad
+exec --no-startup-id $term2 --name taskmanager -e bpytop
 
 # Dropdown terminal
 for_window [instance="dropdown"] floating enable

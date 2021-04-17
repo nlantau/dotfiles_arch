@@ -3,4 +3,6 @@
 
 xmodmap -e "clear lock"
 xmodmap -e "keysym Caps_Lock = Escape"
+#xmodmap -e "keysym Caps_Lock = Control_L"
+
 

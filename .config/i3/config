@@ -11,8 +11,8 @@ set $term --no-startup-id alacritty
 set $term2 --no-startup-id kitty
 
 set $suspend sudo systemctl suspend
-
-set $hibernate sudo -A systemctl hibernate
+set $hibernate sudo systemctl hibernate
+set $reboot sudo systemctl reboot
 
 
 font pango:monospace 8
@@ -193,10 +193,22 @@ bindsym $modAlt+Shift+p exec flameshot gui
 
 ##### POWER  ###############################################################
 
-# Suspend session
-bindsym $mod+Shift+c exec --no-startup-id $suspend
-bindsym $mod+Shift+x exec /home/nlantau/.config/scripts/lock
-bindsym $mod+Shift+z exec shutdown now
+set $locker /home/nlantau/.config/scripts/lock && sleep 1
+
+set $mode_system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $locker && $suspend, mode "default"
+    bindsym h exec --no-startup-id $locker && $hibernate, mode "default"
+    bindsym r exec --no-startup-id $locker && $reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id shutdown now, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+x mode "$mode_system"
 
 
 ##### VPN  #################################################################

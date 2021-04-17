@@ -8,6 +8,7 @@ set $mod Mod4
 set $modAlt Mod1 
 
 set $term --no-startup-id alacritty
+set $term2 --no-startup-id kitty
 
 set $suspend sudo systemctl suspend
 
@@ -77,7 +78,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -167,13 +168,13 @@ exec picom -f
 ##### STARTUP SCRIPTS  #####################################################
 
 # Caps -> Esc
-exec_always --no-startup-id $HOME/.config/scripts/xmod_caps.sh
+exec --no-startup-id $HOME/.config/scripts/xmod_caps.sh
 
 # Polybar Launch Script
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # xinput, Touchpad
-exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
+exec --no-startup-id $HOME/.config/scripts/xinput_config.sh
 
 
 ##### SCREEN  ##############################################################
@@ -212,6 +213,28 @@ bindsym $modAlt+Shift+m exec $HOME/.config/scripts/spotify
 # IntelliJ
 # Not loading plugings when executed this way...
 bindsym $modAlt+Shift+j exec /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh
+
+
+
+##### TESTING #############################################################
+
+bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $mod+a [instance="math"] scratchpad show; [instance="math"] move position center
+
+# Dropdown terminal
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 700 600
+for_window [instance="dropdown"] move scratchpad
+exec --no-startup-id $term2 --name dropdown -e tmux
+
+# Dropdown terminal with Python started
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 700 600
+for_window [instance="math"] move scratchpad
+exec --no-startup-id $term2 --name math -e python -q
+
+
+
 
 
 

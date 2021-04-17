@@ -57,8 +57,8 @@ font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = i3
-modules-center = xwindow
+modules-left = i3 xwindow
+modules-center =
 modules-right = filesystem backlight-acpi alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
@@ -81,7 +81,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:100:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard

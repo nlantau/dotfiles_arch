@@ -235,7 +235,7 @@ set ignorecase
 
 " General
 set so=7
-set wrap
+set nowrap
 set number
 set hidden
 set wildmenu
@@ -243,7 +243,7 @@ set showmatch
 set autoindent
 set cursorline
 set showbreak=↪
-set wrapmargin=8
+"set wrapmargin=8
 set relativenumber
 
 " Tab control

@@ -178,7 +178,7 @@ exec picom -f
 ##### STARTUP SCRIPTS  #####################################################
 
 # Caps -> Esc
-exec --no-startup-id $HOME/.config/scripts/xmod_caps.sh
+exec_always --no-startup-id $HOME/.config/scripts/xmod_caps.sh
 
 # Load start script
 #exec --no-startup-id $HOEM/.config/scripts/start.sh

@@ -237,7 +237,7 @@ bindsym $mod+x mode "$mode_system"
 ##### VPN  #################################################################
 
 # OpenVPN to tryhackme.com
-bindsym $modAlt+Shift+t exec sudo openvpn ~/Hämtningar/nlantau\(1\).ovpn
+bindsym $modAlt+Shift+t exec sudo openvpn ~/Hämtningar/nlantau.ovpn
 
 
 ##### APPLICATIONS #########################################################

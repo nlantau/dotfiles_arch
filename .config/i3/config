@@ -248,8 +248,8 @@ bindsym $modAlt+Shift+m exec $HOME/.config/scripts/spotify
 # IntelliJ
 # Not loading plugings when executed this way...
 #bindsym $modAlt+Shift+j exec $term -e /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh
-bindsym $modAlt+Shift+j exec $term -e /home/nlantau/.config/scripts/run_intellij.sh
-
+#bindsym $modAlt+Shift+j exec "/home/nlantau/.config/scripts/run_intellij.sh"
+bindsym $modAlt+Shift+j exec $term --working-directory /home/nlantau/IntelliJ/idea-IU-211.6693.111/bin
 
 ##### DROPDOWN ############################################################
 
@@ -273,7 +273,7 @@ exec --no-startup-id $term2 --name dropdown -e tmux
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 700 600
 for_window [instance="math"] move scratchpad
-exec --no-startup-id $term2 --name math -e python -q
+exec --no-startup-id $term2 --name math -e ipython --no-banner
 
 
 ##### TESTING #############################################################

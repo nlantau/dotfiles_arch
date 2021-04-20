@@ -177,6 +177,7 @@ nnoremap <Leader><Leader> :w<CR>
 
 " ----- Save And Compile pdf  -----------------------------------------
 nnoremap <C-r>r :w<CR>:!pandoc -V geometry:margin=0.1in -o %:r.pdf %<Enter><CR>
+nnoremap <C-r>l :w<CR>:!pdflatex %<Enter><CR>
 
 
 " ----- Git Fugitive --------------------------------------------------

@@ -195,7 +195,7 @@ exec_always --no-startup-id $HOME/.config/scripts/xmod_caps.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # xinput, Touchpad
-exec --no-startup-id $HOME/.config/scripts/xinput_config.sh
+exec_always --no-startup-id $HOME/.config/scripts/xinput_config.sh
 
 
 ##### SCREEN  ##############################################################

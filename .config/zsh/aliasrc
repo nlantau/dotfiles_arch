@@ -21,6 +21,10 @@ alias cc="cd $XDG_CONFIG_HOME"
 alias da="cd $DROPBOXDIR"
 alias sa="cd $SCHOOLDIR"
 
+# Current courses
+alias c1="cd $SCHOOLDIR/8_DA273B_VT21_Computer_Security"
+alias c2="cd $SCHOOLDIR/8_FY263A_VT21_Sensor_Technology_for_Embedded_Systems"
+
 # Grep
 alias grep="grep ${colorflag}"
 

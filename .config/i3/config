@@ -209,8 +209,9 @@ bindsym $modAlt+l exec sudo xbacklight -set 1;
 
 
 # Activated connected HDMI
-bindsym $modAlt+Shift+s exec /home/nlantau/.config/scripts/xrandr_dual_monitors.sh
-bindsym $modAlt+Shift+d exec /home/nlantau/.config/scripts/xrandr_kill_dual.sh
+# NEW untested script
+bindsym $modAlt+Shift+s exec "/home/nlantau/.config/scripts/monitors dual"
+bindsym $modAlt+Shift+d exec "/home/nlantau/.config/scripts/monitors laptop"
 
 # Print Screen
 bindsym $modAlt+Shift+p exec flameshot gui

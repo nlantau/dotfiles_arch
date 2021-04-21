@@ -13,7 +13,9 @@ alias vz="$EDITOR $ZDOTDIR/.zshrc"
 alias vn="$EDITOR $MYVIMRC"
 alias ali="$EDITOR $ZDOTDIR/aliasrc"
 alias ve="$EDITOR $ZDOTDIR/.zshenv"
-alias vi="$EDITOR $XDG_CONFIG_HOME/i3/config"
+alias vi="$EDITOR $HOME/.xinitrc"
+alias vc="$EDITOR $HOME/dwm-6.2/config.def.h"
+alias vi3="$EDITOR $XDG_CONFIG_HOME/i3/config"
 
 # cd alias
 alias cg="cd $GITHUBDIR"

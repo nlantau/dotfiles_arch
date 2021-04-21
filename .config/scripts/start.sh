@@ -30,11 +30,17 @@ xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.6
 # Faster key repeat and delay
 xset r rate 300 50
 
+# Remove bell sound
+xset b off
 
+# Wallpaper
+nitrogen --restore &
 
+# Compositor
+picom -f &
 
-
-
+# Keyboard Layout
+setxkbmap se &
 
 
 

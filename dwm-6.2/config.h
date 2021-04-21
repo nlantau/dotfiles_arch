@@ -48,6 +48,7 @@ static const Layout layouts[] = {
 /* key definitions */
 /* Mod1Mask = Alt; Mod4Mask = Super */
 #define MODKEY Mod4Mask
+#define MODALT Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -62,6 +63,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 //static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *enabledualmonitors[]  = { "xrandr_dual_monitors.sh", NULL };
+static const char *disabledualmonitors[]  = { "xrandr_kill_dual.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -89,9 +92,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_plus,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_plus,  setgaps,        {.i = 0  } },
+	{ MODKEY,                       XK_plus,   setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_plus,   setgaps,        {.i = 0  } },
         { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
+        { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
+        { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

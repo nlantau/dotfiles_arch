@@ -55,14 +55,14 @@ $HOME/.config/scripts/xmod_caps.sh &
 $HOME/.config/scripts/xinput_config.sh &
 
 # Loop
-while true; do
-  dwm >/dev/null 2>&1
-done
+#while true; do
+  #dwm >/dev/null 2>&1
+#done
 
 # Execute DWM
-exec dwm
+#exec dwm
 
 
 
 
-#exec i3
+exec i3

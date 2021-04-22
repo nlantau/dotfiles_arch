@@ -32,24 +32,25 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-while true
-do
-        VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-        LOCALTIME=$(date +%Z\=%Y-%m-%dT%H:%M)
-        OTHERTIME=$(TZ=Europe/Stockholm date +%Z\=%H:%M)
-        IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you
-        TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
+#while true
+#do
+        #VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+        #LOCALTIME=$(date +%Z\=%Y-%m-%dT%H:%M)
+        #OTHERTIME=$(TZ=Europe/Stockholm date +%Z\=%H:%M)
+        #IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you
+        #TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 
-        if acpi -a | grep off-line > /dev/null
-        then
-                BAT="Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
-                xsetroot -name "$IP $BAT $VOL $TEMP $LOCALTIME"
-        else
-                BAT="Bat. $(cat /sys/class/power_supply/BAT0/capacity)% "
-                xsetroot -name "$IP $VOL $BAT $TEMP $LOCALTIME"
-        fi
-        sleep 20s
-done &
+        #if acpi -a | grep off-line > /dev/null
+        #then
+                #BAT="Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
+                #xsetroot -name "$IP $BAT $VOL $TEMP $LOCALTIME"
+        #else
+                #BAT="Bat. $(cat /sys/class/power_supply/BAT0/capacity)% "
+                #xsetroot -name "$IP $VOL $BAT $TEMP $LOCALTIME"
+        #fi
+        #sleep 20s
+#done &
+
 
 
 # Loop
@@ -80,6 +81,9 @@ while true; do
 
   # Java issues
   export AWT_TOOLKIT=MToolkit
+
+  # rsblocks
+  rsblocks &
 
   dwm >/dev/null 2>&1
 done

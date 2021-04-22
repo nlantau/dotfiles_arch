@@ -90,21 +90,24 @@ static const char *termcmd[]  = { "alacritty", NULL };
 /* Applications */
 static const char *intellij[]  = { "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh", NULL };
 static const char *flame[]  = { "flameshot","gui", NULL };
+static const char *spotify[] = {"spotify", NULL};
 
 /* Monitors */
 static const char *enabledualmonitors[]  = { "monitors","dual", NULL };
 static const char *enabletriplemonitors[]  = { "monitors","triple", NULL };
 static const char *disabledualmonitors[]  = { "monitors","laptop", NULL };
+static const char *locker[] = {"lock", NULL};
 
 /* Sound */
 static const char *mutecmd[] = { "/usr/bin/pactl","set-sink-mute","0","toggle", NULL };
 static const char *volupcmd[] = { "/usr/bin/pactl","set-sink-volume","0","+5%", NULL };
 static const char *voldowncmd[] = { "/usr/bin/pactl","set-sink-volume","0","-5%", NULL };
-static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","0","toggle", NULL };
+static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","@DEFAULT_SOURCE@","toggle", NULL };
 
 /* Backlight */
 static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
 static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
+static const char *brlowcmd[] = { "sudo", "xbacklight", "-set", "1", NULL };
 
 /* Power */
 static const char *susp[] = {"sudo","systemctl","suspend",NULL};
@@ -126,6 +129,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_z,      spawn,          {.v = locker } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -134,14 +138,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +1 } },
+        { MODALT,                       XK_l,      spawn,          {.v = brlowcmd } },
 	{ MODALT,                       XK_a,      togglescratch,  {.i = 1  } },
 	{ MODALT,                       XK_u,      togglescratch,  {.i = 0  } },
 	{ MODALT,                       XK_y,      togglescratch,  {.i = 2  } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-        { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
+        { MODALT|ShiftMask,             XK_s,      spawn,          {.v = disabledualmonitors } },         
         { MODALT|ShiftMask,             XK_j,      spawn,          {.v = intellij } },
+        { MODALT|ShiftMask,             XK_m,      spawn,          {.v = spotify } },
         { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
-        { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
+        { MODALT|ShiftMask,             XK_d,      spawn,          {.v = enabledualmonitors } },         
         { MODALT|ShiftMask,             XK_t,      spawn,          {.v = enabletriplemonitors } },         
         { MODALT|ShiftMask,             XK_x,      spawn,          {.v = susp } },         
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -149,6 +154,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },             /* Will be master tile */
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
         { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
         { 0,                            XF86XK_AudioMute,          spawn, {.v = mutecmd } },
         { 0,                            XF86XK_AudioMicMute,       spawn, {.v = miccmd } },

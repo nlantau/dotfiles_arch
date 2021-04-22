@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
@@ -19,6 +22,18 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_pink  },
 };
+
+/* Sound */
+static const char *mutecmd[] = { "/usr/bin/pactl","set-sink-mute","0","toggle", NULL };
+static const char *volupcmd[] = { "/usr/bin/pactl","set-sink-volume","0","+5%", NULL };
+static const char *voldowncmd[] = { "/usr/bin/pactl","set-sink-volume","0","-5%", NULL };
+static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","0","toggle", NULL };
+
+/* Backlight */
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
+
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -63,8 +78,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 //static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *enabledualmonitors[]  = { "xrandr_dual_monitors.sh", NULL };
-static const char *disabledualmonitors[]  = { "xrandr_kill_dual.sh", NULL };
+static const char *enabledualmonitors[]  = { "monitors","dual", NULL };
+static const char *disabledualmonitors[]  = { "monitors","laptop", NULL };
+static const char *flame[]  = { "flameshot","gui", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +113,13 @@ static Key keys[] = {
         { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
         { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
         { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
+        { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
+        { 0,                            XF86XK_AudioMute,          spawn, {.v = mutecmd } },
+        { 0,                            XF86XK_AudioMicMute,       spawn, {.v = miccmd } },
+        { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+        { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+        { 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
+        { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

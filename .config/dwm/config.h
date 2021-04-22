@@ -23,22 +23,13 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_pink  },
 };
 
-/* Sound */
-static const char *mutecmd[] = { "/usr/bin/pactl","set-sink-mute","0","toggle", NULL };
-static const char *volupcmd[] = { "/usr/bin/pactl","set-sink-volume","0","+5%", NULL };
-static const char *voldowncmd[] = { "/usr/bin/pactl","set-sink-volume","0","-5%", NULL };
-static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","0","toggle", NULL };
-
-/* Backlight */
-static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
-static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
-
-
 
 typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
+
+/* Scratchpads  */
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"st", "-n", "sppy", "-g", "120x34", "-e", "ipython", "--no-banner", NULL };
@@ -58,7 +49,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	  NULL,			NULL,		0,		    	1,			 -1 },
-	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
+	{ "Firefox",      NULL,			NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "sppy",       	NULL,		SPTAG(2),		1,			 -1 },
@@ -92,14 +83,26 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-//static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+
+/* Applications */
+static const char *intellij[]  = { "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh", NULL };
+static const char *flame[]  = { "flameshot","gui", NULL };
+
+/* Monitors */
 static const char *enabledualmonitors[]  = { "monitors","dual", NULL };
 static const char *disabledualmonitors[]  = { "monitors","laptop", NULL };
-static const char *flame[]  = { "flameshot","gui", NULL };
-static const char *intellij[]  = { "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh", NULL };
 
 
+/* Sound */
+static const char *mutecmd[] = { "/usr/bin/pactl","set-sink-mute","0","toggle", NULL };
+static const char *volupcmd[] = { "/usr/bin/pactl","set-sink-volume","0","+5%", NULL };
+static const char *voldowncmd[] = { "/usr/bin/pactl","set-sink-volume","0","-5%", NULL };
+static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","0","toggle", NULL };
+
+/* Backlight */
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 
 
 static Key keys[] = {

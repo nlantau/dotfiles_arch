@@ -45,7 +45,8 @@ do
                 BAT="Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
                 xsetroot -name "$IP $BAT $VOL $TEMP $LOCALTIME $OTHERTIME"
         else
-                xsetroot -name "$IP $VOL $TEMP $LOCALTIME $OTHERTIME"
+                BAT="Bat. $(cat /sys/class/power_supply/BAT0/capacity)% "
+                xsetroot -name "$IP $VOL $BAT $TEMP $LOCALTIME $OTHERTIME"
         fi
         sleep 20s
 done &

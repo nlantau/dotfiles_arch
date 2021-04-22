@@ -69,6 +69,8 @@ while true; do
   # Wallpaper
   nitrogen --restore &
 
+  # Notifications
+  /usr/bin/dunst &
 
   # Caps -> Esc
   $HOME/.config/scripts/xmod_caps.sh &

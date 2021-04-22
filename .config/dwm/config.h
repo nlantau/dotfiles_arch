@@ -65,6 +65,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -104,44 +106,50 @@ static const char *miccmd[] = { "/usr/bin/pactl","set-source-mute","0","toggle",
 static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
 static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 
+/* Power */
+static const char *susp[] = {"sudo","systemctl","suspend",NULL};
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },             /* Will be master tile */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_plus,   setgaps,        {.i = 0  } },
-	{ MODKEY,                       XK_u,      togglescratch,  {.i = 0  } },
-	{ MODKEY,                       XK_a,      togglescratch,  {.i = 1  } },
-	{ MODKEY,                       XK_y,      togglescratch,  {.i = 2  } },
-        { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
+	{ MODALT,                       XK_a,      togglescratch,  {.i = 1  } },
+	{ MODALT,                       XK_u,      togglescratch,  {.i = 0  } },
+	{ MODALT,                       XK_y,      togglescratch,  {.i = 2  } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+        { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
         { MODALT|ShiftMask,             XK_j,      spawn,          {.v = intellij } },
+        { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
         { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
         { MODALT|ShiftMask,             XK_t,      spawn,          {.v = enabletriplemonitors } },         
-        { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
-        { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
+        { MODALT|ShiftMask,             XK_x,      spawn,          {.v = susp } },         
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_plus,   setgaps,        {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },             /* Will be master tile */
+        { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
         { 0,                            XF86XK_AudioMute,          spawn, {.v = mutecmd } },
         { 0,                            XF86XK_AudioMicMute,       spawn, {.v = miccmd } },
         { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },

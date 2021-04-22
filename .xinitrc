@@ -43,10 +43,10 @@ do
         if acpi -a | grep off-line > /dev/null
         then
                 BAT="Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
-                xsetroot -name "$IP $BAT $VOL $TEMP $LOCALTIME $OTHERTIME"
+                xsetroot -name "$IP $BAT $VOL $TEMP $LOCALTIME"
         else
                 BAT="Bat. $(cat /sys/class/power_supply/BAT0/capacity)% "
-                xsetroot -name "$IP $VOL $BAT $TEMP $LOCALTIME $OTHERTIME"
+                xsetroot -name "$IP $VOL $BAT $TEMP $LOCALTIME"
         fi
         sleep 20s
 done &

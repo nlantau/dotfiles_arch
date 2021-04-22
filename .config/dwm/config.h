@@ -97,6 +97,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *enabledualmonitors[]  = { "monitors","dual", NULL };
 static const char *disabledualmonitors[]  = { "monitors","laptop", NULL };
 static const char *flame[]  = { "flameshot","gui", NULL };
+static const char *intellij[]  = { "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh", NULL };
 
 
 
@@ -133,6 +134,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      togglescratch,  {.i = 1  } },
 	{ MODKEY,                       XK_y,      togglescratch,  {.i = 2  } },
         { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
+        { MODALT|ShiftMask,             XK_j,      spawn,          {.v = intellij } },
         { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
         { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
         { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         

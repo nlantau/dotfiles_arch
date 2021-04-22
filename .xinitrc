@@ -75,6 +75,9 @@ while true; do
   # xinput, TouchPad
   $HOME/.config/scripts/xinput_config.sh &
 
+  # Java issues
+  export AWT_TOOLKIT=MToolkit
+
   dwm >/dev/null 2>&1
 done
 

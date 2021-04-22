@@ -91,8 +91,8 @@ static const char *flame[]  = { "flameshot","gui", NULL };
 
 /* Monitors */
 static const char *enabledualmonitors[]  = { "monitors","dual", NULL };
+static const char *enabletriplemonitors[]  = { "monitors","triple", NULL };
 static const char *disabledualmonitors[]  = { "monitors","laptop", NULL };
-
 
 /* Sound */
 static const char *mutecmd[] = { "/usr/bin/pactl","set-sink-mute","0","toggle", NULL };
@@ -139,6 +139,7 @@ static Key keys[] = {
         { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
         { MODALT|ShiftMask,             XK_j,      spawn,          {.v = intellij } },
         { MODALT|ShiftMask,             XK_s,      spawn,          {.v = enabledualmonitors } },         
+        { MODALT|ShiftMask,             XK_t,      spawn,          {.v = enabletriplemonitors } },         
         { MODALT|ShiftMask,             XK_d,      spawn,          {.v = disabledualmonitors } },         
         { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
         { 0,                            XF86XK_AudioMute,          spawn, {.v = mutecmd } },

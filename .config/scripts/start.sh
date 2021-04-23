@@ -33,12 +33,6 @@ xset r rate 300 50
 # Remove bell sound
 xset b off
 
-# Wallpaper
-nitrogen --restore &
-
-# Compositor
-picom -f &
-
 # Keyboard Layout
 setxkbmap se &
 

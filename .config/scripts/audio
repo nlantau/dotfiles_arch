@@ -1,4 +1,5 @@
 #!/bin/sh
+# nlantau, 2021-04-23
 
 PERC=$(amixer get Master | tail -n 1 | grep -Eo '[0-9]+' | head -n2 | tail -n1)
 MUTED=$(amixer get Master | tail -n 1 | grep -Eo '\[on\]')

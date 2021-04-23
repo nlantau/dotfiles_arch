@@ -1,0 +1,10 @@
+#!/bin/sh
+
+PERC=$(amixer get Master | tail -n 1 | grep -Eo '[0-9]+' | head -n2 | tail -n1)
+MUTED=$(amixer get Master | tail -n 1 | grep -Eo '\[on\]')
+
+if [[ $? -eq 0 ]]; then
+  echo $PERC
+else
+  echo "0"
+fi

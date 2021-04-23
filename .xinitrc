@@ -54,44 +54,50 @@ fi
 
 
 # Loop
-while true; do
-  # Faster key repeat and delay
-  xset r rate 300 50
+#while true; do
+# Faster key repeat and delay
+xset r rate 300 50
 
-  # Remove Bell sound
-  xset b off
+# Remove Bell sound
+xset b off
 
-  # Keyboard Language
-  setxkbmap se &
+# Keyboard Language
+setxkbmap se &
 
-  # Compositor
-  picom -f &
+# Compositor
+picom -f &
 
-  # Wallpaper
-  nitrogen --restore &
+# Wallpaper
+nitrogen --restore &
 
-  # Notifications
-  /usr/bin/dunst &
+# Notifications
+/usr/bin/dunst &
 
-  # Caps -> Esc
-  $HOME/.config/scripts/xmod_caps.sh &
+# Caps -> Esc
+$HOME/.config/scripts/xmod_caps.sh &
 
-  # xinput, TouchPad
-  $HOME/.config/scripts/xinput_config.sh &
+# xinput, TouchPad
+$HOME/.config/scripts/xinput_config.sh &
 
-  # Java issues
-  export AWT_TOOLKIT=MToolkit
+# Java issues
+export AWT_TOOLKIT=MToolkit
 
-  # rsblocks
-  rsblocks &
+# rsblocks
+#rsblocks &
 
-  dwm >/dev/null 2>&1
-done
+#nm-applet > /dev/null 2>&1 &
+
+# Polybar
+#$HOME/.config/polybar/launch.sh
+
+#dwm >/dev/null 2>&1
+#done
 
 # Execute DWM
-#exec dwm
+exec $HOME/.config/slstatus/slstatus/slstatus &
+exec dwm
 
 
 
 
-exec i3
+#exec i3

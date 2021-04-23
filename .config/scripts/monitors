@@ -1,28 +1,20 @@
-#!/usr/bin/bash
+#!/bin/sh
+# nlantau, 2021-04-24
 
-#xrandr --output HDMI1 --set audio force-dvi --mode 1920x1080
-
-function unset_caps {
-  xmodmap -e "clear lock" >/dev/null 2>&1
-  [[ $? -eq 0 ]] || notify-send "Error clear Lock" 
-
-  xmodmap -e "keysym Caps_Lock = Escape"  >/dev/null 2>&1
-  [[ $? -eq 0 ]] || notify-send "Error setting Esc"
-}
 
 function setting_laptop {
   xrandr --output \
     eDP1 --mode 1920x1080 --output \
-    DP3 --off --output DP1 --off \
-    && unset_caps || notify-send "Laptop error"
+    DP3 --off --output DP1 --off
+    [[ $? -eq 0 ]] || notify-send "Laptop error"
 }
 
 function setting_dual { 
   xrandr --output \
     eDP1 --off --output \
     DP3 --mode 1920x1080 --output \
-    DP1 --mode 1920x1080 --right-of DP3 \
-    && unset_caps || notify-send "Not Connected" 
+    DP1 --mode 1920x1080 --right-of DP3
+    [[ $? -eq 0 ]] || notify-send "Not Connected"
 }
 
 function setting_triple {  
@@ -30,8 +22,8 @@ function setting_triple {
     eDP1 --mode 1920x1080 --output \
     DP3 --mode 1920x1080 --right-of \
     eDP1 --output \
-    DP1 --mode 1920x1080 --right-of DP3 \
-    && unset_caps || notify-send "Not Connected" 
+    DP1 --mode 1920x1080 --right-of DP3
+    [[ $? -eq 0 ]] || notify-send "Not Connected"
 }
 
 function set_xset {
@@ -43,10 +35,17 @@ function set_xset {
 
 
 case "$1" in
-  "laptop") setting_laptop && set_xset || notify-send "Laptop error" ;;
-  "dual") setting_dual && set_xset || notify-send "Not Connected" ;;
-  "triple")setting_triple && set_xset || notify-sen "Not Connected";;
-  *) notify-send "Multi Monitor Error";;
+  "laptop")
+    setting_laptop ;
+    set_xset || notify-send "Laptop error" ;;
+  "dual")
+    setting_dual ;
+    set_xset || notify-send "Not Connected" ;;
+  "triple")
+    setting_triple ;
+    set_xset || notify-send "Not Connected";;
+  *)
+    notify-send "Multi Monitor Error";;
 esac
 
 

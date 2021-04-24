@@ -37,13 +37,16 @@ function set_xset {
 case "$1" in
   "laptop")
     setting_laptop ;
-    set_xset || notify-send "Laptop error" ;;
+    set_xset ;
+    ;;
   "dual")
     setting_dual ;
-    set_xset || notify-send "Not Connected" ;;
+    set_xset ;
+    ;;
   "triple")
     setting_triple ;
-    set_xset || notify-send "Not Connected";;
+    set_xset ;
+    ;;
   *)
     notify-send "Multi Monitor Error";;
 esac

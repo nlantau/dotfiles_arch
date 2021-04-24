@@ -110,7 +110,8 @@ static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 static const char *brlowcmd[] = { "sudo", "xbacklight", "-set", "1", NULL };
 
 /* Power */
-static const char *susp[] = {"sudo","systemctl","suspend",NULL};
+//static const char *susp[] = {"sudo","systemctl","suspend",NULL};
+static const char *susp[] = {"power", NULL};
 
 
 static Key keys[] = {
@@ -129,6 +130,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+        { MODKEY,                       XK_x,      spawn,          {.v = susp } },         
 	{ MODKEY,                       XK_z,      spawn,          {.v = locker } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
@@ -148,7 +150,7 @@ static Key keys[] = {
         { MODALT|ShiftMask,             XK_p,      spawn,          {.v = flame } },         
         { MODALT|ShiftMask,             XK_d,      spawn,          {.v = enabledualmonitors } },         
         { MODALT|ShiftMask,             XK_t,      spawn,          {.v = enabletriplemonitors } },         
-        { MODALT|ShiftMask,             XK_x,      spawn,          {.v = susp } },         
+	{ MODALT|ShiftMask,             XK_x,                      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_plus,   setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
@@ -171,7 +173,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,                       XK_x,      quit,           {0} },
 };
 
 /* button definitions */

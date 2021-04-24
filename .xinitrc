@@ -39,7 +39,10 @@ xset r rate 300 50
 xset b off
 
 # Keyboard Language
-setxkbmap se &
+setxkbmap se -option 'caps:ctrl_modifier' &
+
+# Caps Lock is Esc when pressed alone, but CTRL in combination
+xcape -e 'Caps_Lock=Escape' &
 
 # Compositor
 picom -f &
@@ -56,13 +59,10 @@ $HOME/.config/scripts/xinput_config.sh &
 # Java issues
 export AWT_TOOLKIT=MToolkit
 
-#nm-applet > /dev/null 2>&1 &
-
-
-
-# Execute DWM
+# slstatus
 exec $HOME/.config/slstatus/slstatus/slstatus &
 
+# Execute DWM
 exec dwm
 
 #exec i3

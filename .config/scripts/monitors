@@ -29,7 +29,8 @@ function setting_triple {
 function set_xset {
   xset r rate 300 50 || notify-send "xset rate error"
   xset b off || notify-send "xset bell error"
-  setxkbmap se || notify-send "Setting SE error"
+  setxkbmap se -option 'caps:ctrl_modifier' || notify-send "Setting SE error"
+  xcape -e 'Caps_Lock=Escape' || notify-send "Setting Caps -> Esc Error"
 }
 
 

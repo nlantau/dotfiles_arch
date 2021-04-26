@@ -60,5 +60,3 @@ case "$1" in
   *)
     notify-send "Multi Monitor Error";;
 esac
-
-

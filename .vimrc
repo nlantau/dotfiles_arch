@@ -264,6 +264,7 @@ set nobackup
 set splitright
 set splitbelow
 set noswapfile
+set nobackup
 set cmdheight=1
 set laststatus=2
 set nowritebackup

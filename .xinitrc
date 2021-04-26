@@ -32,17 +32,21 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+
+# Monitor, key repeat, language, caps->esc
+$HOME/.config/scripts/monitor laptop &
+
 # Faster key repeat and delay
-xset r rate 300 50
+#xset r rate 300 50
 
 # Remove Bell sound
-xset b off
+#xset b off
 
 # Keyboard Language
-setxkbmap se -option 'caps:ctrl_modifier' &
+#setxkbmap se -option 'caps:ctrl_modifier' &
 
 # Caps Lock is Esc when pressed alone, but CTRL in combination
-xcape -e 'Caps_Lock=Escape' &
+#xcape -e 'Caps_Lock=Escape' &
 
 # Compositor
 picom -f &
@@ -54,7 +58,7 @@ nitrogen --restore &
 /usr/bin/dunst &
 
 # xinput, TouchPad
-$HOME/.config/scripts/xinput_config.sh &
+$HOME/.config/scripts/xinput_config &
 
 # Java issues
 export AWT_TOOLKIT=MToolkit

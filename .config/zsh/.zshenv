@@ -30,13 +30,12 @@ export RANGER_LOAD_DEFAULT_RC=false
 export TERM=xterm-256color
 
 # Paths
-export PATH=$XDG_CONFIG_HOME/scripts:$PATH
-export PATH=$HOME/connections:$PATH
+#export PATH=$XDG_CONFIG_HOME/scripts:$PATH
+#export PATH=$HOME/connections:$PATH
 
 # IntelliJ
-export PATH=/home/nlantau/IntelliJ/idea-UI-211.6693.111/bin:$PATH
+#export PATH=/home/nlantau/IntelliJ/idea-UI-211.6693.111/bin:$PATH
 export _JAVA_AWT_WM_NONREPARENTING=1
-
 
 
 

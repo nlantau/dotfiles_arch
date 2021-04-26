@@ -1,9 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# nlantau, 2021-04-26
 
-# Need spotifyd as backend
-# If device not found: 
-# spotifyd -u username -p password
-# then enter spt
-
-spotifyd
+spotifyd -u $SPOTIFYUSER -p $SPOTIFYPASS || ( notify-send "Spotify: Login issue" && exit -1 )
 alacritty -e spt

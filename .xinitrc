@@ -36,17 +36,10 @@ fi
 # Monitor, key repeat, language, caps->esc
 $HOME/.config/scripts/monitor laptop &
 
-# Faster key repeat and delay
-#xset r rate 300 50
+# Screensaver off
+xset s off
+xset -dpms
 
-# Remove Bell sound
-#xset b off
-
-# Keyboard Language
-#setxkbmap se -option 'caps:ctrl_modifier' &
-
-# Caps Lock is Esc when pressed alone, but CTRL in combination
-#xcape -e 'Caps_Lock=Escape' &
 
 # Compositor
 picom -f &

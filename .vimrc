@@ -31,6 +31,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'mboughaba/i3config.vim'
+"Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 

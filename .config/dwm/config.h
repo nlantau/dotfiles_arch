@@ -30,9 +30,9 @@ typedef struct {
 } Sp;
 
 /* Scratchpads  */
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "sppy", "-g", "120x34", "-e", "ipython", "--no-banner", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "80x34", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd3[] = {"st", "-n", "sppy", "-g", "80x34", "-e", "ipython", "--no-banner", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},

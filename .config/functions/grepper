@@ -1,0 +1,6 @@
+#!/bin/bash
+# nlantau, 2021-05-02
+
+[[ -z $1 ]] && (echo "Use args";  exit -1 )
+
+find . -iname '*.pdf' -exec pdfgrep -i $1 {} +

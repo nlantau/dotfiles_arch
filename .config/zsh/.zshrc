@@ -27,7 +27,7 @@ bindkey -v
 
 # Add ~/.config/functions/ to fpath
 fpath=($HOME/.config/functions $fpath)
-autoload ez ex pan 
+autoload ez ex pan grepper
 
 # setopt
 setopt PROMPT_SUBST

@@ -1,10 +1,5 @@
-" nlantau .vimrc
-" My intentions are to keep my .vimrc small with 
-" only 'necessary' plugins.
-" I'll keep some mappings, while trying to
-" change habbit of using commands instead
-
-
+" nlantau .vimrc, Arch
+" Updated: 2021-05-04
 
 " ----- Leader --------------------------------------------------------------
 let mapleader=","
@@ -24,34 +19,20 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
+"Plug 'tpope/vim-fugitive'
+"Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'mboughaba/i3config.vim'
-"Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 
 " ----- Gruvbox -------------------------------------------------------------
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
-"let g:isLight=1
-
-"function! ToggleBG() abort
-"  if g:isLight == 0
-"    set background=light
-"    let g:isLight=1
-"  else
 set background=dark
-"    let g:isLight=0
-"  endif
-"endfunction
-
-nnoremap <Leader>tb :call ToggleBG()<CR>
-
 
 " ----- Color ---------------------------------------------------------------
 function! MyHighlights() abort
@@ -69,12 +50,12 @@ colorscheme gruvbox
 
 
 " ----- Pop Up Tabbing ------------------------------------------------------
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Close preview when completion is done
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
 " ----- Airline -------------------------------------------------------------
@@ -181,18 +162,6 @@ nnoremap <C-r>r :w<CR>:!pandoc -V geometry:margin=0.1in -o %:r.pdf %<Enter><CR>
 nnoremap <C-r>l :w<CR>:!pdflatex %<Enter><CR>
 
 
-" ----- Git Fugitive --------------------------------------------------
-nnoremap <Leader>gl :Glog<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>ga :Gwrite<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gd :Git difftool<CR>
-
-
 " ----- Navigation ----------------------------------------------------
 nnoremap <S-d> <C-d>
 nnoremap <S-u> <C-u>
@@ -202,27 +171,21 @@ nnoremap <S-k> 10k<CR>
 vnoremap <S-k> 10k<CR>
 
 
-" -----  Buffers ------------------------------------------------------
-nnoremap <C-n> :bnext<CR>
-nnoremap <Leader>bc :bd<CR>
-nnoremap <Leader>sb :ls<CR>:sb
-nnoremap <Leader>vs :ls<CR>:vert sb
-nnoremap <Leader>bl :ls<CR>:b<space>
-
-
 " ----- Split Navigation & Window Resize ------------------------------
-nnoremap <C-c> <C-w>c
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-r>s <C-w>=<CR>
-nnoremap <Up> :resize +2<CR>
-nnoremap <Down> :resize -2<CR>
-nnoremap <Left> :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
-nnoremap <Silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <Silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <C-c> <C-w>c
+"nnoremap <C-j> <C-w><C-j>
+"nnoremap <C-k> <C-w><C-k>
+"nnoremap <C-l> <C-w><C-l>
+"nnoremap <C-h> <C-w><C-h>
+"nnoremap <C-r>s <C-w>=<CR>
+"nnoremap <Up> :resize +2<CR>
+"nnoremap <Down> :resize -2<CR>
+"nnoremap <Left> :vertical resize +2<CR>
+"nnoremap <Right> :vertical resize -2<CR>
+"nnoremap <Silent> <Leader>+ :exe 
+""resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <Silent> <Leader>- :exe 
+""resize " . (winheight(0) * 2/3)<CR>
 
 
 " ----- Editor Config -------------------------------------------------

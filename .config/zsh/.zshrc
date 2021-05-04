@@ -38,7 +38,10 @@ RPROMPT='${vcs_info_msg_0_}'
 
 # Paths
 typeset -U path
-path=($XDG_CONFIG_HOME/scripts "$path[@]")
-path=($HOME/connections "$path[@]")
-path=($HOME/.local/bin "$path[@]")
+path=(
+    "$XDG_CONFIG_HOME/scripts"
+    "$HOME/connections"
+    "$HOME/.local/bin"
+    "$path[@]"
+)
 

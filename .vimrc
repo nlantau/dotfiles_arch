@@ -1,5 +1,5 @@
 " nlantau .vimrc, Arch
-" Updated: 2021-05-08
+" Updated: 2021-05-09
 
 " ----- Leader --------------------------------------------------------------
 let mapleader=","
@@ -32,6 +32,7 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 set background=dark
 
+
 " ----- Color ---------------------------------------------------------------
 function! MyHighlights() abort
    highlight Visual ctermbg=white ctermfg=red 
@@ -39,7 +40,7 @@ endfunction
 
 augroup MyColors
  autocmd!
- autocmd ColorScheme gruvbox call MyHighlights()
+ autocmd ColorScheme github-dark call MyHighlights()
  autocmd InsertLeave * set cursorline
  autocmd InsertEnter * set nocursorline
 augroup END
@@ -47,10 +48,9 @@ augroup END
 colorscheme gruvbox
 
 " ----- Airline -------------------------------------------------------------
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
 
 " ----- au Vim --------------------------------------------------------------
 augroup myVim
@@ -62,7 +62,6 @@ augroup myVim
   au FileType vim setlocal softtabstop=2
   au FileType vimrc setlocal softtabstop=2
 augroup END
-
 
 " ----- au Make -------------------------------------------------------------
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
@@ -76,7 +75,6 @@ augroup myMD
   au FileType md setlocal softtabstop=2
 augroup END
 
-
 " ----- au sh ---------------------------------------------------------------
 augroup mySh
   au!
@@ -85,7 +83,6 @@ augroup mySh
   au FileType sh setlocal shiftwidth=2
   au FileType sh setlocal softtabstop=2
 augroup END
-
 
 " ----- C -------------------------------------------------------------------
 augroup myC
@@ -97,7 +94,6 @@ augroup myC
   au FileType c setlocal softtabstop=2
 augroup END
 
-
 " ----- Haskell -------------------------------------------------------------
 "let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 "let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
@@ -108,9 +104,7 @@ augroup END
 "let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 "let g:haskell_classic_highlighting = 1
 
-
 " ----- au python -----------------------------------------------------------
-
 augroup myPython
   au!
   au FileType python setlocal expandtab
@@ -118,7 +112,6 @@ augroup myPython
   au FileType python setlocal shiftwidth=4
   au FileType python setlocal softtabstop=4
 augroup END
-
 
 " ----- .vimrc --------------------------------------------------------------
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -128,19 +121,15 @@ nnoremap ' `
 inoremap jk <ESC>
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Leader><ESC> :noh<CR><ESC>
-nnoremap <Leader>nt :NERDTreeToggle<CR>
-
 
 " ----- Save And Close ------------------------------------------------
 nnoremap <Leader>x :x<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader><Leader> :w<CR>
 
-
 " ----- Save And Compile pdf  -----------------------------------------
 nnoremap <C-r>r :w<CR>:!pandoc -V geometry:margin=0.1in -o %:r.pdf %<Enter><CR>
 nnoremap <C-r>l :w<CR>:!pdflatex %<Enter><CR>
-
 
 " ----- Navigation ----------------------------------------------------
 nnoremap <S-d> <C-d>
@@ -149,7 +138,6 @@ nnoremap <S-j> 10j<CR>
 vnoremap <S-j> 10j<CR>
 nnoremap <S-k> 10k<CR>
 vnoremap <S-k> 10k<CR>
-
 
 " ----- Editor Config -------------------------------------------------
 set encoding=UTF-8

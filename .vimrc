@@ -1,5 +1,5 @@
 " nlantau .vimrc, Arch
-" Updated: 2021-05-04
+" Updated: 2021-05-08
 
 " ----- Leader --------------------------------------------------------------
 let mapleader=","
@@ -19,8 +19,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-"Plug 'tpope/vim-fugitive'
-"Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -36,27 +34,17 @@ set background=dark
 
 " ----- Color ---------------------------------------------------------------
 function! MyHighlights() abort
-    highlight Visual ctermbg=white ctermfg=red 
+   highlight Visual ctermbg=white ctermfg=red 
 endfunction
 
 augroup MyColors
-  autocmd!
-  autocmd ColorScheme gruvbox call MyHighlights()
-  autocmd InsertLeave * set cursorline
-  autocmd InsertEnter * set nocursorline
+ autocmd!
+ autocmd ColorScheme gruvbox call MyHighlights()
+ autocmd InsertLeave * set cursorline
+ autocmd InsertEnter * set nocursorline
 augroup END
 
 colorscheme gruvbox
-
-
-" ----- Pop Up Tabbing ------------------------------------------------------
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Close preview when completion is done
-"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 
 " ----- Airline -------------------------------------------------------------
 let g:airline_powerline_fonts = 0
@@ -121,11 +109,7 @@ augroup END
 "let g:haskell_classic_highlighting = 1
 
 
-
 " ----- au python -----------------------------------------------------------
-"let g:PyFlakeOnWrite = 1
-"let g:PyFlakeCheckers = 'pep8,mccabe'
-"let g:python_highlight_all = 1
 
 augroup myPython
   au!
@@ -133,10 +117,6 @@ augroup myPython
   au FileType python setlocal tabstop=8
   au FileType python setlocal shiftwidth=4
   au FileType python setlocal softtabstop=4
-"  au FileType python nnoremap <buffer> <LocalLeader>r :w<CR>:!clear;python3 %<CR>
-"  au FileType python 
-"                \nnoremap <buffer> <LocalLeader>p 
-"                \:-1read $HOME/.vim/snippets/.python<CR>GddggjA
 augroup END
 
 
@@ -171,30 +151,12 @@ nnoremap <S-k> 10k<CR>
 vnoremap <S-k> 10k<CR>
 
 
-" ----- Split Navigation & Window Resize ------------------------------
-"nnoremap <C-c> <C-w>c
-"nnoremap <C-j> <C-w><C-j>
-"nnoremap <C-k> <C-w><C-k>
-"nnoremap <C-l> <C-w><C-l>
-"nnoremap <C-h> <C-w><C-h>
-"nnoremap <C-r>s <C-w>=<CR>
-"nnoremap <Up> :resize +2<CR>
-"nnoremap <Down> :resize -2<CR>
-"nnoremap <Left> :vertical resize +2<CR>
-"nnoremap <Right> :vertical resize -2<CR>
-"nnoremap <Silent> <Leader>+ :exe 
-""resize " . (winheight(0) * 3/2)<CR>
-"nnoremap <Silent> <Leader>- :exe 
-""resize " . (winheight(0) * 2/3)<CR>
-
-
 " ----- Editor Config -------------------------------------------------
 set encoding=UTF-8
 set clipboard=unnamed
 
 " Vim fuzzy
 set path+=**
-
 
 " Searching
 set hlsearch

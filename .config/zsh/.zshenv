@@ -31,6 +31,7 @@ export TERM=xterm-256color
 # Java - Some bug
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-
+# Bat Manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 

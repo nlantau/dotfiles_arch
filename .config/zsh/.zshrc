@@ -33,7 +33,7 @@ setopt PROMPT_SUBST
 #setopt autocd
 
 # PS1 & RPS1
-PROMPT="λ %F{green}%1~ %f> "
+PROMPT="%m %F{green}%1~ %f> "
 RPROMPT='${vcs_info_msg_0_}' 
 
 

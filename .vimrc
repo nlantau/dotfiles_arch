@@ -40,7 +40,7 @@ endfunction
 
 augroup MyColors
  autocmd!
- autocmd ColorScheme github-dark call MyHighlights()
+ autocmd ColorScheme gruvbox call MyHighlights()
  autocmd InsertLeave * set cursorline
  autocmd InsertEnter * set nocursorline
 augroup END

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+path="/home/nlantau/.config/scripts/log_data"
+filename="$(date '+%x').log"
+full_path="$path/$filename"
+
+#echo $filename
+#echo "$path/$filename"
+#echo $full_path
+
+if ! [[ -f $full_path ]]; then
+  touch $full_path
+fi
+
+date '+%X' >> $full_path
+

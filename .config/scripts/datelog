@@ -1,16 +1,11 @@
 #!/bin/sh
+# nlantau, 2021-05-09
+# Log every minute the computer is on. New logfile every day.
 
 path="/home/nlantau/.config/scripts/log_data"
 filename="$(date '+%x').log"
 full_path="$path/$filename"
 
-#echo $filename
-#echo "$path/$filename"
-#echo $full_path
-
-if ! [[ -f $full_path ]]; then
-  touch $full_path
-fi
+[[ -f $full_path ]] || touch $full_path
 
 date '+%X' >> $full_path
-

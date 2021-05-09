@@ -2,7 +2,7 @@
 # nlantau, 2021-03-13
 
 # Color stdout
-colorflag="--color"
+colorflag="--color=auto"
 
 # Vim
 alias vim="$EDITOR"
@@ -39,10 +39,10 @@ alias xclip="xclip -selection clipboard"
 
 
 # Applies to UNIX & Linux
-alias l="ls ${colorflag}"
-alias ls="ls ${colorflag}"
-alias la="ls -a ${colorflag}"
-alias ll="ls -lah ${colorflag}"
+alias l="ls ${colorflag} --group-directories-first"
+alias ls="ls ${colorflag} --group-directories-first"
+alias la="ls -a ${colorflag} --group-directories-first"
+alias ll="ls -lahF ${colorflag} --group-directories-first"
 alias c="clear"
 alias d="deactivate"
 alias ..="cd .."

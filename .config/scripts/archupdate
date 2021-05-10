@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo pacman -Syuw --no-confirm || notify-send "Error while downloading updates"
+{ sudo pacman -Syuw --noconfirm >/dev/null 2>&1 && echo "> Script ran: `date '+%x %X'`" >> update.log ;} ||
+  echo "Could not run archupdate `date '+%x %X'`" >> update.log

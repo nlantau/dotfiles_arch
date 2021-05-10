@@ -20,12 +20,14 @@ alias vi3="$EDITOR $XDG_CONFIG_HOME/i3/config"
 # cd alias
 alias cg="cd $GITHUBDIR"
 alias ctf="cd $GITHUBDIR/CTF2021"
-
 alias sd="cd $XDG_CONFIG_HOME/scripts"
 alias cc="cd $XDG_CONFIG_HOME"
 alias da="cd $DROPBOXDIR"
 alias sa="cd $SCHOOLDIR"
 alias down="cd ~/Hämtningar"
+
+# Pacman
+alias p="sudo pacman -Syu"
 
 # Current courses
 alias c1="cd $SCHOOLDIR/8_DA273B_VT21_Computer_Security"
@@ -36,7 +38,6 @@ alias grep="grep ${colorflag}"
 
 # xclip
 alias xclip="xclip -selection clipboard"
-
 
 # Applies to UNIX & Linux
 alias l="ls ${colorflag} --group-directories-first"

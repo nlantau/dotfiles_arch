@@ -1,4 +1,6 @@
 #!/bin/sh
 
-{ sudo pacman -Syuw --noconfirm >/dev/null 2>&1 && echo "> Script ran: `date '+%x %X'`" >> update.log ;} ||
-  echo "Could not run archupdate `date '+%x %X'`" >> update.log
+LOGFILE="/home/nlantau/.config/scripts/update.log"
+
+{ sudo pacman -Syuw --noconfirm >/dev/null 2>&1 && echo "> Script ran: `date '+%x %X'`" >> $LOGFILE ;} ||
+  echo "Could not run archupdate `date '+%x %X'`" >> $LOGFILE

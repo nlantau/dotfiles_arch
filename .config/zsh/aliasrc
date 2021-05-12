@@ -42,6 +42,7 @@ alias xclip="xclip -selection clipboard"
 # Applies to UNIX & Linux
 alias l="ls ${colorflag} --group-directories-first"
 alias ls="ls ${colorflag} --group-directories-first"
+alias lss="du -ah"
 alias la="ls -a ${colorflag} --group-directories-first"
 alias ll="ls -lahF ${colorflag} --group-directories-first"
 alias c="clear"
@@ -55,7 +56,7 @@ alias dad="dotfiles add -u"
 #alias dp="dotfiles push dotfiles --mirror"
 alias dp="dotfiles push origin master:archi3_Lenovo"
 
-dc() {dotfiles commit -m "${1:-update}";}
+dc() {dotfiles commit -m "${@:-update}";}
 
 # Git - General
 alias gad="git add -u"

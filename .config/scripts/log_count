@@ -4,9 +4,7 @@
 # Count all logged minutes
 
 path="${XDG_CONFIG_HOME:-/home/nlantau/.config}/scripts/log_data"
-
 days=$((`ls $path | wc -l`-1))
-
 first_log=$(ls -lt $path | tail -n 1 | cut -d ' ' -f11)
 first_date=${first_log::-4}
 

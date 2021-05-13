@@ -1,0 +1,24 @@
+#!/bin/sh
+# nlantau, 2021-05-13
+
+while getopts "hcdi" o; do case "${o}" in
+  h) printf "\n > To turn bluetooth on and connect to Bose SIII, set -c flag"
+     printf "\n > To disconnect and power off bluetooth, set -d flag"
+     printf "\n > To grab bluetooth info, set -i flag\n\n\n" && exit 0 ;;
+  c) connect=on ;;
+  d) disconnect=on ;;
+  i) bluetoothctl info && exit 0 ;;
+  *) printf "\n > Invalid option. See \"-h\" for help\n\n" && exit 1 ;;
+esac done
+
+BMAC=$(bluetoothctl devices | awk '/Bose$/ {print $2}')
+
+function blue() {
+  { bluetoothctl power $1 ; } && printf "\n > Power $1\n" ; 
+  [[ $1 == "off" ]] && exit 0
+
+  { [[ $1 == "on" ]] && bluetoothctl connect $BMAC && printf "\n > Connecting...\n" ; }
+}
+
+
+{ [[ -z $disconnect ]] && blue on ; } || { [[ -z $connect ]] && blue off ; }

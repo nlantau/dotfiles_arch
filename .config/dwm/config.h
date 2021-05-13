@@ -92,7 +92,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 /* Applications */
 static const char *intellij[]  = { "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh", NULL };
 static const char *flame[]  = { "flameshot","gui", NULL };
-static const char *spotify[] = {"spotify", NULL};
+static const char *spotify[] = {"spotifyterm", NULL};
 
 /* Monitors */
 static const char *enabledualmonitors[]  = { "monitors","dual", NULL };

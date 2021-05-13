@@ -5,12 +5,20 @@
 
 path="${XDG_CONFIG_HOME:-/home/nlantau/.config}/scripts/log_data"
 
+days=$((`ls $path | wc -l`-1))
+
 first_log=$(ls -lt $path | tail -n 1 | cut -d ' ' -f11)
 first_date=${first_log::-4}
 
 for f in $path/*.log; do sum=$((sum + $(cat $f | wc -l))); done
 
-printf " > Totalt time since $first_date: \n"
+printf "\n > Totalt time since $first_date ($days days ago): \n\n"
 printf " > In minutes : $sum\n"
 printf " > In hours   : " ; echo "scale=2;$sum/60" | bc
 printf " > In days    : " ; echo "scale=2;$sum/60/24" | bc
+echo -e "\n------------------------------\n"
+printf " > Average/day: \n\n"
+printf " > In minutes : " ; echo "scale=2;$sum/$days" | bc
+printf " > In hours   : " ; echo "scale=2;$sum/$days/60" | bc
+printf " > Percentage : " ; echo "scale=1;$sum/$days/60/24*100" | bc
+printf "\n\n"

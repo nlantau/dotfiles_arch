@@ -1,0 +1,16 @@
+#!/bin/sh
+# nlantau, 2021-05-14
+
+# Count all logged minutes
+
+path="${XDG_CONFIG_HOME:-/home/nlantau/.config}/scripts/log_data"
+
+first_log=$(ls -lt $path | tail -n 1 | cut -d ' ' -f11)
+first_date=${first_log::-4}
+
+for f in $path/*.log; do sum=$((sum + $(cat $f | wc -l))); done
+
+printf " > Totalt time since $first_date: \n"
+printf " > In minutes : $sum\n"
+printf " > In hours   : " ; echo "scale=2;$sum/60" | bc
+printf " > In days    : " ; echo "scale=2;$sum/60/24" | bc

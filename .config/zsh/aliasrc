@@ -6,6 +6,7 @@ colorflag="--color=auto"
 
 # Vim
 alias vim="$EDITOR"
+alias vi="$EDITOR"
 alias v="$EDITOR"
 
 # Editor commands
@@ -13,7 +14,7 @@ alias vz="$EDITOR $ZDOTDIR/.zshrc"
 alias vn="$EDITOR $MYVIMRC"
 alias ali="$EDITOR $ZDOTDIR/aliasrc"
 alias ve="$EDITOR $ZDOTDIR/.zshenv"
-alias vi="$EDITOR $HOME/.xinitrc"
+alias vix="$EDITOR $HOME/.xinitrc"
 alias vc="$EDITOR $XDG_CONFIG_HOME/dwm/config.def.h"
 alias vi3="$EDITOR $XDG_CONFIG_HOME/i3/config"
 

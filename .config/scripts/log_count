@@ -5,9 +5,9 @@
 
 path="${XDG_CONFIG_HOME:-/home/nlantau/.config}/scripts/log_data"
 days=$((`ls $path | wc -l`-1))
-first_log=$(ls -lt $path | tail -n 1 | cut -d ' ' -f11)
-today=$(ls -l $path | tail -n 1 | cut -d ' ' -f9)
-tmin=$(cat $today | wc -l)
+first_log=$(ls -lt $path | tail -n 1 | grep -Eo '[0-9-]+.log')
+today=$(ls -l $path | tail -n1 | grep -Eo '[0-9-]+.log')
+tmin=$(cat $path/$today | wc -l)
 first_date=${first_log::-4}
 
 for f in $path/*.log; do sum=$((sum + $(cat $f | wc -l))); done

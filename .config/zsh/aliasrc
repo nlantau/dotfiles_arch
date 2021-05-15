@@ -50,7 +50,8 @@ alias lss="du -ah"
 alias la="ls -a ${colorflag} --group-directories-first"
 alias ll="ls -lahF ${colorflag} --group-directories-first"
 alias c="clear"
-alias d="deactivate"
+#alias d="source /opt/anaconda/bin/deactivate root"
+#alias s="source /opt/anaconda/bin/activate root"
 alias ..="cd .."
 
 # Git bare

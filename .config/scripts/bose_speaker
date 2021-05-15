@@ -17,8 +17,9 @@ function blue() {
   { bluetoothctl power $1 ; } && printf "\n > Power $1\n" ; 
   [[ $1 == "off" ]] && exit 0
 
+  # If turning on, connect to Bose SIII as well
   { [[ $1 == "on" ]] && bluetoothctl connect $BMAC && printf "\n > Connecting...\n" ; }
 }
 
-
+# Turn on or off bluetooth
 { [[ -z $disconnect ]] && blue on ; } || { [[ -z $connect ]] && blue off ; }

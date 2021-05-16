@@ -23,15 +23,15 @@ for f in $path/*.log; do sum=$((sum + $(cat $f | wc -l))); done
 # Print stats
 printf "\n$green >$nc ${yellow}Total time since${nc} $first_date ($days days ago): \n\n"
 printf "$green >$nc In minutes : $sum\n"
-printf "$green >$nc In hours   : " ; echo "scale=2;$sum/60" | bc
-printf "$green >$nc In days    : " ; echo "scale=2;$sum/60/24" | bc
+printf "$green >$nc In hours   : " ; bc <<< "scale=2;$sum/60"
+printf "$green >$nc In days    : " ; bc <<< "scale=2;$sum/60/24"
 echo -e "\n------------------------------\n"
 printf "$green >$nc Average/day: \n\n"
-printf "$green >$nc In minutes : " ; echo "scale=2;$sum/$days" | bc
-printf "$green >$nc In hours   : " ; echo "scale=2;$sum/$days/60" | bc
-printf "$green >$nc Percentage : " ; echo "scale=1;$sum/$days/60/24*100" | bc
+printf "$green >$nc In minutes : " ; bc <<< "scale=2;$sum/$days"
+printf "$green >$nc In hours   : " ; bc <<< "scale=2;$sum/$days/60"
+printf "$green >$nc Percentage : " ; bc <<< "scale=1;$sum/$days/60/24*100"
 echo -e "\n------------------------------\n"
 printf "$green >$nc ${red}Today${nc}: \n\n"
 printf "$green >$nc In minutes : " ; echo $tmin
-printf "$green >$nc In hours   : " ; echo "scale=2;$tmin/60" | bc
+printf "$green >$nc In hours   : " ; bc <<< "scale=2;$tmin/60"
 printf "\n\n"

@@ -1,21 +1,29 @@
 #!/bin/sh
 # nlantau, 2021-05-14
+# updated, 2021-05-17
 
 # Count all logged minutes
 
 colors="/home/nlantau/.config/scripts/colors"
 
+# Source colors if colors exists
 [[ -f $colors ]] && source $colors
 
 # Path, days, first logging date
 path="${XDG_CONFIG_HOME:-/home/nlantau/.config}/scripts/log_data"
+
 days=$((`ls $path | wc -l`-1))
+
+# If arg1 provided, subtract it from $days
+[[ ! -z $1 ]] && { days=$(( $days - $1 )) ; }
+
+# First (earliest) log-file
 first_log=$(ls -lt $path | tail -n 1 | grep -Eo '[0-9-]+.log')
+first_date=${first_log::-4}
 
 # Todays stats
 today=$(ls -l $path | tail -n1 | grep -Eo '[0-9-]+.log')
 tmin=$(cat $path/$today | wc -l)
-first_date=${first_log::-4}
 
 # Sum all logged minutes
 for f in $path/*.log; do sum=$((sum + $(cat $f | wc -l))); done

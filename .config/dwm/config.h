@@ -133,7 +133,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_x,      quit,           {0} },
+	{ MODKEY|ShiftMask|ControlMask, XK_x,      quit,           {0} },
 	{ MODKEY,                       XK_z,      spawn,          {.v = locker } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },

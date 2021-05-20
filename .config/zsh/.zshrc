@@ -42,6 +42,7 @@ path=(
     "$XDG_CONFIG_HOME/scripts"
     "$HOME/connections"
     "$HOME/.local/bin"
+    "$GITHUBDIR/_noVCS"
     "$path[@]"
 )
 

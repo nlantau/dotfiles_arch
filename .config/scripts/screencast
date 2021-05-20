@@ -1,0 +1,4 @@
+#!/bin/sh
+# nlantau, 2021-05-20
+
+ffcast -q $(while slop -q -n -f '-g %g ';do :;done) rec /home/nlantau/`date '+%x-%X'`.mp4

@@ -1,18 +1,30 @@
 -- XMonad, Arch
 -- nlantau, 2021-05-26
 
+-- Base
 import XMonad
-import Data.Monoid
 import System.Exit
+import qualified XMonad.StackSet as W
 
+-- Actions
+import XMonad.Actions.CycleWS (nextScreen)
+
+-- Data
+import Data.Monoid
+import qualified Data.Map        as M
+
+-- Layouts
+import XMonad.Layout.IndependentScreens
 import XMonad.Hooks.ManageDocks
+
+-- Utils
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
+-- XF86
 import Graphics.X11.ExtraTypes.XF86
 
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
 
 myTerminal      = "alacritty"
 
@@ -28,13 +40,28 @@ myClickJustFocuses = False
 myBorderWidth   = 1
 
 
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
+
+myScratchPads :: [NamedScratchpad]
+myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+                , NS "pyt" spawnPython findPy manageTerm
+                , NS "rang" spawnRanger findRanger manageTerm
+                ]
+    where
+        spawnTerm   = myTerminal ++ " -t scratchpad"
+        findTerm    = title =? "scratchpad"
+        manageTerm  = customFloating $ W.RationalRect l t w h
+            where
+                h = 0.5
+                w = 0.5
+                t = 0.75 -h
+                l = 0.75 -w
+        spawnPython = myTerminal ++ " -t pyt -e ipython --no-banner"
+        findPy      = title =? "pyt"
+        spawnRanger = myTerminal ++ " -t rang -e ranger"
+        findRanger  = title =? "rang"
+
+
+
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
@@ -63,6 +90,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((altMask .|. shiftMask, xK_t     ), spawn "monitors triple")
     , ((altMask .|. shiftMask, xK_p     ), spawn "flameshot gui")
     , ((altMask .|. shiftMask, xK_j     ), spawn "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh")
+    , ((altMask .|. shiftMask, xK_x     ), spawn "power")
+
+-- Scratchpads
+    , ((altMask, xK_u     ), namedScratchpadAction myScratchPads "terminal")
+    , ((altMask, xK_y     ), namedScratchpadAction myScratchPads "pyt")
+    , ((altMask, xK_a     ), namedScratchpadAction myScratchPads "rang")
+
+-- Workspaces
+    , ((modm .|. shiftMask, xK_comma     ), nextScreen)
 
     -- close focused window
     , ((modm,               xK_q     ), kill)
@@ -108,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- See also the statusBar function from Hooks.DynamicLog.
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_x     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modm .|. shiftMask, xK_c     ), spawn "xmonad --recompile; xmonad --restart")
     ]
     ++
@@ -194,7 +230,8 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore 
+    ] <+> namedScratchpadManageHook myScratchPads
 
 ------------------------------------------------------------------------
 -- Event handling

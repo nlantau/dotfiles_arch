@@ -5,7 +5,6 @@
 let mapleader=","
 let maplocalleader=","
 syntax on
-filetype on
 filetype plugin indent on
 
 " ----- Vim Plug ------------------------------------------------------------

@@ -46,10 +46,13 @@ nitrogen --restore &
 # Java issues
 export AWT_TOOLKIT=MToolkit
 
+# Exec xmonad
+exec xmonad
+
 # slstatus
-exec $HOME/.config/slstatus/slstatus/slstatus &
+#exec $HOME/.config/slstatus/slstatus/slstatus &
 
 # Execute DWM
-exec dwm
+#exec dwm
 
 #exec i3

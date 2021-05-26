@@ -18,7 +18,7 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#09222b";
-static const char col_pink[]        = "#ff0c93";
+static const char col_pink[]        = "#00d138";
 static const char red[]             = "#ff0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */

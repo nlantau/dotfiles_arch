@@ -61,6 +61,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((altMask .|. shiftMask, xK_d     ), spawn "monitors dual")
     , ((altMask .|. shiftMask, xK_s     ), spawn "monitors laptop")
     , ((altMask .|. shiftMask, xK_t     ), spawn "monitors triple")
+    , ((altMask .|. shiftMask, xK_p     ), spawn "flameshot gui")
+    , ((altMask .|. shiftMask, xK_j     ), spawn "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh")
+
     -- close focused window
     , ((modm,               xK_q     ), kill)
      -- Rotate through the available layout algorithms
@@ -106,11 +109,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_x     ), io (exitWith ExitSuccess))
-    -- Restart xmonad
     , ((modm .|. shiftMask, xK_c     ), spawn "xmonad --recompile; xmonad --restart")
-
-    -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
 

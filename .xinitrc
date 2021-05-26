@@ -28,12 +28,6 @@ fi
 
 ##### MY PART ################################################################
 
-# Monitor, key repeat, language, caps->esc
-$HOME/.config/scripts/monitor laptop &
-
-# xinput, TouchPad
-$HOME/.config/scripts/xinput_config &
-
 # Compositor
 picom -f &
 
@@ -42,6 +36,12 @@ nitrogen --restore &
 
 # Notifications
 /usr/bin/dunst &
+
+# Monitor, key repeat, language, caps->esc
+$HOME/.config/scripts/monitor laptop &
+
+# xinput, TouchPad
+$HOME/.config/scripts/xinput_config &
 
 # Java issues
 export AWT_TOOLKIT=MToolkit
@@ -55,4 +55,5 @@ exec xmonad
 # Execute DWM
 #exec dwm
 
+# i3-gaps
 #exec i3

@@ -5,6 +5,8 @@ import XMonad
 import Data.Monoid
 import System.Exit
 
+import Graphics.X11.ExtraTypes.XF86
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -21,12 +23,6 @@ myClickJustFocuses = False
 -- Width of the window border in pixels.
 myBorderWidth   = 1
 
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
---
-myModMask       = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -44,19 +40,25 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
+
+
+myModMask       = mod4Mask
+altMask         = mod1Mask
+
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    , ((altMask .|. shiftMask, xK_d     ), spawn "monitors dual")
+    , ((altMask .|. shiftMask, xK_s     ), spawn "monitors laptop")
+    , ((altMask .|. shiftMask, xK_t     ), spawn "monitors triple")
 
     -- close focused window
     , ((modm,               xK_q     ), kill)
@@ -83,7 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
-    , ((modm,               xK_Return), windows W.swapMaster)
+    , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
@@ -106,6 +108,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
+    -- , ((0, xF86XK_PowerDown),         spawn "sudo pm-suspend")
+    , ((0, xF86XK_AudioRaiseVolume),  spawn "pactl set-sink-volume 0 +5%")
+    , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -5%")
+    , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
+    , ((0, xF86XK_AudioMicMute),      spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+    , ((0, xF86XK_MonBrightnessUp),   spawn "sudo xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessDown), spawn "sudo xbacklight -dec 10")
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.

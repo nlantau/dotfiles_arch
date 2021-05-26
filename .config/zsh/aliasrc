@@ -15,6 +15,9 @@ alias vn="$EDITOR $MYVIMRC"
 alias ali="$EDITOR $ZDOTDIR/aliasrc"
 alias ve="$EDITOR $ZDOTDIR/.zshenv"
 alias vix="$EDITOR $HOME/.xinitrc"
+
+# wm
+alias hc="$EDITOR $HOME/.xmonad/xmonad.hs"
 alias vc="$EDITOR $XDG_CONFIG_HOME/dwm/config.def.h"
 alias vi3="$EDITOR $XDG_CONFIG_HOME/i3/config"
 

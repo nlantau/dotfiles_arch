@@ -162,7 +162,7 @@ set showmatch
 set autoindent
 set cursorline
 set showbreak=↪
-set wrapmargin=8
+"set wrapmargin=8
 set relativenumber
 
 " Tab control

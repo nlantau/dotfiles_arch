@@ -74,25 +74,28 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
-
-
 myModMask       = mod4Mask
 altMask         = mod1Mask
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
---
+
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    -- launch a terminal
+-- Launch a Terminal
     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
-    -- launch dmenu
+
+-- Launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
+
+-- Monitors
     , ((altMask .|. shiftMask, xK_d     ), spawn "monitors dual")
     , ((altMask .|. shiftMask, xK_s     ), spawn "monitors laptop")
     , ((altMask .|. shiftMask, xK_t     ), spawn "monitors triple")
     , ((altMask .|. shiftMask, xK_p     ), spawn "flameshot gui")
     , ((altMask .|. shiftMask, xK_j     ), spawn "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh")
+
+-- Lock & Suspend
     , ((altMask .|. shiftMask, xK_x     ), spawn "power")
 
 -- Scratchpads
@@ -135,7 +138,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
-    -- , ((0, xF86XK_PowerDown),         spawn "sudo pm-suspend")
+
+-- XF86
     , ((0, xF86XK_AudioRaiseVolume),  spawn "pactl set-sink-volume 0 +5%")
     , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -5%")
     , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
@@ -145,7 +149,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modm .|. shiftMask, xK_c     ), spawn "xmonad --recompile; xmonad --restart")
@@ -246,15 +250,6 @@ myManageHook = composeAll
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 myEventHook = mempty
-
-------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
---myLogHook = return ()
-
 
 ------------------------------------------------------------------------
 -- Startup hook

@@ -1,5 +1,8 @@
-" nlantau .vimrc, Arch
-" Updated: 2021-05-09
+" nlantau, 2021-05-28
+"
+" Nvim... Just in case Vim diez...
+"
+" nlantau init.vim, Arch
 
 " ----- Leader --------------------------------------------------------------
 let mapleader=","
@@ -7,14 +10,17 @@ let maplocalleader=","
 syntax on
 filetype plugin indent on
 
-" ----- Vim Plug ------------------------------------------------------------
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
-call plug#begin('~/.vim/plugged')
+let g:python3_host_prog ='/usr/bin/python3'
+
+" ----- Vim Plug ------------------------------------------------------------
+
+call plug#begin('~/.config/nvim/autoload')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh'
+    \ }
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -22,15 +28,37 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'mboughaba/i3config.vim'
 call plug#end()
+
+"set rtp+=~/.vim/pack/XXX/start/LanguageClient-neovim
+let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+
+" ----- Haskell -------------------------------------------------------------
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+let g:haskell_classic_highlighting = 1
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
 
 
 " ----- Gruvbox -------------------------------------------------------------
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_contrast_light = 'hard'
 set background=dark
-
 
 " ----- Color ---------------------------------------------------------------
 function! MyHighlights() abort
@@ -92,16 +120,6 @@ augroup myC
   au FileType c setlocal shiftwidth=2
   au FileType c setlocal softtabstop=2
 augroup END
-
-" ----- Haskell -------------------------------------------------------------
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-let g:haskell_classic_highlighting = 1
 
 " ----- au python -----------------------------------------------------------
 augroup myPython
@@ -178,5 +196,6 @@ set cmdheight=1
 set laststatus=2
 set nowritebackup
 set updatetime=100
+
 
 

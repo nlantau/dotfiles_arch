@@ -14,9 +14,9 @@ import Data.Monoid
 import qualified Data.Map        as M
 
 -- Layouts
-import XMonad.Layout.Spacing
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.Spacing
 
 -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
@@ -30,21 +30,30 @@ import XMonad.Util.SpawnOnce
 -- XF86
 import Graphics.X11.ExtraTypes.XF86
 
+
+myModMask :: KeyMask
+myModMask = mod4Mask
+
+altMask :: KeyMask
+altMask = mod1Mask
+
 myTerminal :: String
 myTerminal = "alacritty"
 
--- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 
--- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
--- Width of the window border in pixels.
 myBorderWidth :: Dimension
-myBorderWidth   = 1
+myBorderWidth   = 2
 
+myNormalBorderColor :: String
+myNormalBorderColor  = "#4a4a4a"
+
+myFocusedBorderColor :: String
+myFocusedBorderColor = "#128a00"
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
@@ -65,18 +74,9 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
         spawnRanger = myTerminal ++ " -t rang -e ranger"
         findRanger  = title =? "rang"
 
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
-
--- Border colors for unfocused and focused windows, respectively.
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
-
-myModMask       = mod4Mask
-altMask         = mod1Mask
 
 ------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
+-- Key Bindings
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
@@ -128,7 +128,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_MonBrightnessUp),   spawn "sudo xbacklight -inc 10")
     , ((0, xF86XK_MonBrightnessDown), spawn "sudo xbacklight -dec 10")
 
--- Quit xmonad
+-- Quit XMonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modm .|. shiftMask, xK_c     ), spawn "xmonad --recompile; xmonad --restart")
     ]
@@ -138,14 +138,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
-
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
+-- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+
 ------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
+-- Mouse Bindings
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
     [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
@@ -156,7 +158,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     ]
 
 ------------------------------------------------------------------------
--- Layouts:
+-- Layouts
 
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -168,17 +170,15 @@ mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spac
 mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
 
-
 myLayout = avoidStruts ( tiled ||| Mirror tiled ||| Full)
   where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = mySpacing 3 $ Tall nmaster delta ratio
      nmaster = 1
      ratio   = 1/2
      delta   = 3/100
 
 ------------------------------------------------------------------------
--- Window rules:
+-- Window Rules
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
@@ -208,10 +208,7 @@ myEventHook = mempty
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
-
--- Run xmonad with the settings you specify. No need to modify this.
---
+-- Main
 main :: IO ()
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 /home/nlantau/.config/xmobar/xmobarrc0"
@@ -243,26 +240,6 @@ main = do
             }
                , startupHook        = myStartupHook
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

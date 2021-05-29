@@ -16,6 +16,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
+"Plug 'dkasak/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'

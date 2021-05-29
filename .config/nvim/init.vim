@@ -9,19 +9,20 @@ let mapleader=","
 let maplocalleader=","
 syntax on
 filetype plugin indent on
-
+set nocompatible
 
 let g:python3_host_prog ='/usr/bin/python3'
 
 " ----- Vim Plug ------------------------------------------------------------
 
 call plug#begin('~/.config/nvim/autoload')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh'
-    \ }
-Plug 'morhetz/gruvbox'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh'
+    "\ }
+Plug 'dkasak/gruvbox'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
@@ -31,7 +32,7 @@ Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 "set rtp+=~/.vim/pack/XXX/start/LanguageClient-neovim
-let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+"let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
 
 " ----- Haskell -------------------------------------------------------------
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
@@ -56,7 +57,7 @@ let g:cabal_indent_section = 2
 
 
 " ----- Gruvbox -------------------------------------------------------------
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 set background=dark
 

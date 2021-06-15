@@ -229,8 +229,8 @@ main = do
         , manageHook         = myManageHook
         , handleEventHook    = myEventHook
         , logHook = dynamicLogWithPP $ xmobarPP
-            { ppOutput = \x -> hPutStrLn xmproc0 x
-                            >> hPutStrLn xmproc1 x
+            { ppOutput = \x -> hPutStrLn xmproc1 x
+                            >> hPutStrLn xmproc0 x
                             >> hPutStrLn xmproc2 x
             , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"           -- Current workspace
             , ppTitle = xmobarColor "#b3afc2" "" . shorten 60               -- Title of active window

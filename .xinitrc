@@ -34,6 +34,9 @@ picom -f &
 # Wallpaper
 nitrogen --restore &
 
+# Damn bell
+xset b off
+
 # Notifications
 /usr/bin/dunst &
 

@@ -211,9 +211,9 @@ myStartupHook = return ()
 -- Main
 main :: IO ()
 main = do
-    xmproc0 <- spawnPipe "xmobar -x 0 /home/nlantau/.config/xmobar/xmobarrc0"
+    xmproc2 <- spawnPipe "xmobar -x 2 /home/nlantau/.config/xmobar/xmobarrc0"
     xmproc1 <- spawnPipe "xmobar -x 1 /home/nlantau/.config/xmobar/xmobarrc1"
-    xmproc2 <- spawnPipe "xmobar -x 2 /home/nlantau/.config/xmobar/xmobarrc2"
+    xmproc0 <- spawnPipe "xmobar -x 0 /home/nlantau/.config/xmobar/xmobarrc0"
     xmonad $ docks def
         { terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse

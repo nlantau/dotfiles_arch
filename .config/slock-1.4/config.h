@@ -24,7 +24,7 @@ static const int failonclear = 1;
 static const char * message = "Suckless: Software that sucks less.";
 
 /* text color */
-static const char * text_color = "black";
+static const char * text_color = "red";
 
 /* text size (must be a valid size) */
 static const char * font_name = "9x15";

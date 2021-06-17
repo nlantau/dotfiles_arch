@@ -95,6 +95,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 -- Lock & Suspend
     , ((altMask .|. shiftMask, xK_x     ), spawn "sudo systemctl suspend")
+    , ((altMask .|. shiftMask, xK_z     ), spawn "slock")
 
 -- Scratchpads
     , ((altMask, xK_u     ), namedScratchpadAction myScratchPads "terminal")

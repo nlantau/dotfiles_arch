@@ -1,5 +1,5 @@
 #!/bin/sh
 # nlantau, 2021-04-26
 
-lock && sleep 1
+slock && sleep 1
 sudo systemctl suspend

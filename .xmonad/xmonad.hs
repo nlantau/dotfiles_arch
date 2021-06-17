@@ -94,7 +94,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((altMask .|. shiftMask, xK_j     ), spawn "/home/nlantau/IntelliJ/idea-IU-211.6693.111/bin/idea.sh")
 
 -- Lock & Suspend
-    , ((altMask .|. shiftMask, xK_x     ), spawn "power")
+    , ((altMask .|. shiftMask, xK_x     ), spawn "sudo systemctl suspend")
 
 -- Scratchpads
     , ((altMask, xK_u     ), namedScratchpadAction myScratchPads "terminal")

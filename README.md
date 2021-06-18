@@ -22,8 +22,8 @@ This will partition and format a USB-stick to be used in cross-OS applications
 ```
 After partitioning, 
 ```sh
-mkfs.fat -F32 partition1
-mkfs.fat -F32 partition2
+> mkfs.fat -F32 partition1
+> mkfs.fat -F32 partition2
 # or
-mkfs.exfat partition -n name
+> mkfs.exfat partition -n name
 ```

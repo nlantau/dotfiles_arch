@@ -27,3 +27,9 @@ After partitioning,
 # or
 > mkfs.exfat partition -n name
 ```
+
+To use it,
+```sh
+> mkdir /tmp/usb
+> mount /dev/sda /tmp/usb #/dev/sda is the usb
+```

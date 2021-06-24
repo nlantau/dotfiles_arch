@@ -33,3 +33,32 @@ To use it,
 > mkdir /tmp/usb
 > mount /dev/sda /tmp/usb #/dev/sda is the usb
 ```
+
+# Gentoo
+```sh
+COMMON_FLAGS="-march=skylake -02 -pipe"
+
+USE="X elogind xinerama udev dbus git crypt alc \
+     xrandr upower x264 imlib libpng apng postproc \
+     networkmanager usb matroska man jpeg png gif \
+     ffmpeg encode curl bzip2 savedconfig bash-completion \
+     alsa pulseaudio mp3 mp4 vim-syntax pdf latex \
+     bluetooth wifi aac \
+     -gnome -gtk -kde -plasma -ios -ipod -emacs -xemacs \
+     -dvd -dvdr -dv -coreaudio -scanner -a52 \
+     -systemd -aqua -css -cups"
+
+# The number of possible tasks created <= N*K
+# X.Y=N*0.9 = 2.7
+MAKEOPTS="-j3"
+EMERGE_DEFAULT_OPTS="--jobs 3 --load-average 2.7"
+
+VIDEO_CARDS="intel nvidia"
+INPUT_DEVICES="libinput synaptics"
+
+ACCEPT_LICENSE="*"
+ACCEPT_KEYWORDS="~amd64"
+
+GRUB_PLATFORMS="efi-64"
+
+```

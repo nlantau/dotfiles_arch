@@ -35,6 +35,7 @@ To use it,
 ```
 
 # Gentoo
+make.conf
 ```sh
 COMMON_FLAGS="-march=skylake -02 -pipe"
 
@@ -62,3 +63,40 @@ ACCEPT_KEYWORDS="~amd64"
 GRUB_PLATFORMS="efi-64"
 
 ```
+
+packages
+```sh
+# X
+x11-apps/xinit
+x11-apps/xbacklight
+x11-apps/xinput
+x11-apps/xset
+x11-apps/xcape
+x11-apps/xrandr
+x11-misc/dmenu
+
+# Sys
+sys-auth/elogind
+sys-apps/pciutils
+sys-apps/lm-sensors
+sys-process/htop
+app-admin/sudo
+
+# Terminal
+x11-terms/alacritty
+app-editors/vim
+
+# Media
+www-client/firefox
+media-sound/pulseaudio
+media-sound/alsa-utils
+media-video/ffmpeg
+media-gfx/feh
+
+# vcs & network
+dev-vcs/git
+net-misc/networkmanager
+net-wireless/iw
+net-wireless/wpa_supplicant
+```
+

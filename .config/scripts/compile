@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd $XDG_CONFIG_HOME/dwm
+sudo cp config.def.h config.h || notify-send "Could not copy config.def.h"
+sudo make clean install || notify-send "Could not make clean install"
+
+
